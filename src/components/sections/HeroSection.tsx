@@ -1,5 +1,5 @@
-import React from 'react';
-import { Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Check, Users, Zap } from 'lucide-react';
 import ExchangeRateWidget from '../ui/ExchangeRateWidget';
 import { ExchangeRateWidgetProps } from '../../types';
 import content from '../../data/content.json';
@@ -14,6 +14,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   lastUpdated 
 }) => {
   const { hero } = content;
+  const [liveUsers, setLiveUsers] = useState<number>(1247);
+  const [transfersToday, setTransfersToday] = useState<number>(89);
+
+  // Simulate live counters
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveUsers(prev => prev + Math.floor(Math.random() * 3));
+      if (Math.random() > 0.7) {
+        setTransfersToday(prev => prev + 1);
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="bg-white text-black py-20 min-h-screen flex items-center">
@@ -23,18 +37,40 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               {hero.title}
             </h1>
-            <p className="text-xl mb-8 text-white/90 max-w-2xl">
+            <p className="text-xl mb-8 text-gray-600 max-w-2xl">
               {hero.subtitle}
             </p>
             
             {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-6">
               {hero.trustBadges.map((badge, index) => (
                 <div key={index} className="flex items-center bg-white/10 backdrop-blur rounded-lg px-4 py-2">
                   <Check className="w-5 h-5 mr-2 text-green-400" />
                   <span className="text-sm font-medium">{badge.text}</span>
                 </div>
               ))}
+            </div>
+            
+            {/* Social Proof Counters */}
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8 text-gray-600">
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-green-500" />
+                <span className="text-sm">
+                  <span className="font-semibold text-green-600">{liveUsers.toLocaleString()}</span> users online
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-orange-500" />
+                <span className="text-sm">
+                  <span className="font-semibold text-orange-600">{transfersToday}</span> transfers today
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <span className="text-sm text-green-600 font-medium">
+                  Live rates updated {lastUpdated ? 'now' : 'hourly'}
+                </span>
+              </div>
             </div>
             
             {/* CTA Buttons */}

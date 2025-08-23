@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import logoInitial from '../../assets/logo_initial.png';
 import companyName from '../../assets/company_name.png';
 import content from '../../data/content.json';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
+  activeSection?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
+const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { navigation } = content;
 
@@ -18,7 +18,6 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            {/* <img src={logoInitial} alt="AtomX Pay Initial" className="h-8 w-auto brightness-0 invert" /> */}
             <img src={companyName} alt="AtomX Pay" className="h-[200px] w-auto" />
           </div>
           
@@ -28,10 +27,17 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
               <button 
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-white/90 hover:text-white transition-colors font-medium cursor-pointer"
+                className={`transition-colors font-medium cursor-pointer relative ${
+                  activeSection === link.id 
+                    ? 'text-white' 
+                    : 'text-white/90 hover:text-white'
+                }`}
                 type="button"
               >
                 {link.label}
+                {activeSection === link.id && (
+                  <div className="absolute -bottom-2 left-0 right-0 h-0.5 atomx-accent rounded-full" />
+                )}
               </button>
             ))}
           </div>
@@ -58,8 +64,10 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="py-4 border-t">
             <div className="flex flex-col space-y-4">
               {navigation.links.map((link) => (
                 <button 
@@ -68,10 +76,15 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
                     scrollToSection(link.id);
                     setIsMenuOpen(false);
                   }}
-                  className="text-left text-white/90 hover:text-white transition-colors font-medium cursor-pointer"
+                  className={`text-left transition-colors font-medium cursor-pointer ${
+                    activeSection === link.id 
+                      ? 'text-white font-semibold' 
+                      : 'text-white/90 hover:text-white'
+                  }`}
                   type="button"
                 >
                   {link.label}
+                  {activeSection === link.id && <span className="ml-2 text-orange-400">•</span>}
                 </button>
               ))}
               <div className="pt-4 border-t border-white/10">
@@ -84,7 +97,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
