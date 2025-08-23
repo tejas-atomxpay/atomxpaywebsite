@@ -1,0 +1,370 @@
+{
+  "navigation": {
+    "logo": "AtomX Pay",
+    "links": [
+      { "id": "comparison", "label": "Comparison" },
+      { "id": "features", "label": "Why Us" },
+      { "id": "business-model", "label": "How It Works" },
+      { "id": "faq", "label": "FAQ" },
+      { "id": "testimonials", "label": "Testimonials" },
+      { "id": "blog", "label": "Blog" }
+    ],
+    "authButtons": {
+      "signIn": "Sign In",
+      "signUp": "Sign Up"
+    }
+  },
+  "hero": {
+    "title": "Global Remittances for Indians in Less Than 15 Minutes",
+    "subtitle": "No preloaded inventory. No correspondent banks. Just transparent, real-time transfers powered by blockchain rails.",
+    "trustBadges": [
+      { "text": "FIU Licensed India", "icon": "check" },
+      { "text": "MSB Registered USA", "icon": "check" },
+      { "text": "100% Compliant", "icon": "check" }
+    ],
+    "buttons": {
+      "primary": "Send Money Now",
+      "secondary": "Get Started"
+    }
+  },
+  "calculator": {
+    "title": "Calculate Your Transfer",
+    "labels": {
+      "youSend": "You Send",
+      "theyReceive": "They Receive",
+      "liveGoogleRate": "Live Google Rate",
+      "flatFee": "Flat Fee",
+      "transferTime": "Transfer Time",
+      "totalCost": "Total Cost"
+    },
+    "currencies": {
+      "usd": "USD",
+      "inr": "INR"
+    },
+    "values": {
+      "flatFee": 3,
+      "transferTime": "~15 minutes",
+      "zeroFeePromo": "Zero fee for the first transfer"
+    },
+    "button": "Start Transfer"
+  },
+  "comparison": {
+    "title": "Compare AtomX Pay with Traditional Services",
+    "subtitle": "Here is how much $1000 will get you with AtomX Pay",
+    "description": "\"Always live rates — no hidden spreads, no locked currency pools.\"",
+    "tableHeaders": {
+      "provider": "Provider",
+      "exchangeRate": "Exchange Rate",
+      "transferFee": "Transfer Fee",
+      "recipientGets": "Recipient Gets",
+      "time": "Time"
+    },
+    "categories": {
+      "traditional": "Traditional Banking Rails",
+      "msb": "MSB using Traditional Banking Rails",
+      "blockchain": "Fintech with Blockchain Rail"
+    },
+    "providers": [
+      {
+        "category": "traditional",
+        "name": "Wells Fargo",
+        "exchangeRate": "₹82.50 (5% markup)",
+        "transferFee": "$45",
+        "recipientGets": "₹78,787",
+        "time": "3-5 days"
+      },
+      {
+        "category": "traditional",
+        "name": "Chase",
+        "exchangeRate": "₹83.00 (4.5% markup)",
+        "transferFee": "$40",
+        "recipientGets": "₹79,680",
+        "time": "3-5 days"
+      },
+      {
+        "category": "traditional",
+        "name": "SBI",
+        "exchangeRate": "₹84.00 (3.5% markup)",
+        "transferFee": "$25",
+        "recipientGets": "₹81,900",
+        "time": "2-3 days"
+      },
+      {
+        "category": "traditional",
+        "name": "ICICI Bank",
+        "exchangeRate": "₹84.50 (3% markup)",
+        "transferFee": "$30",
+        "recipientGets": "₹82,015",
+        "time": "2-3 days"
+      },
+      {
+        "category": "msb",
+        "name": "WISE",
+        "exchangeRate": "₹86.50 (1% markup)",
+        "transferFee": "$8",
+        "recipientGets": "₹85,852",
+        "time": "1-2 days"
+      },
+      {
+        "category": "msb",
+        "name": "Remitly",
+        "exchangeRate": "₹85.80 (1.5% markup)",
+        "transferFee": "$4.99",
+        "recipientGets": "₹85,371",
+        "time": "1-3 days"
+      },
+      {
+        "category": "msb",
+        "name": "MoneyGram",
+        "exchangeRate": "₹84.20 (3.5% markup)",
+        "transferFee": "$12",
+        "recipientGets": "₹83,230",
+        "time": "1-2 days"
+      },
+      {
+        "category": "msb",
+        "name": "Xoom",
+        "exchangeRate": "₹85.00 (2.5% markup)",
+        "transferFee": "$5.99",
+        "recipientGets": "₹84,491",
+        "time": "1-3 days"
+      },
+      {
+        "category": "blockchain",
+        "name": "AtomX Pay",
+        "exchangeRate": "₹87.28 (Live Google Rate)",
+        "transferFee": "$3.00",
+        "recipientGets": "₹87,011",
+        "time": "~15 minutes",
+        "highlight": true
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Start sending money to India in 3 simple steps",
+    "steps": [
+      {
+        "number": 1,
+        "title": "Sign Up",
+        "description": "Create your account in minutes with just your email and phone number. Quick and secure registration process.",
+        "icon": "users"
+      },
+      {
+        "number": 2,
+        "title": "Verify KYC",
+        "description": "Complete your identity verification with our secure KYC process. Upload documents and get verified instantly.",
+        "icon": "shield"
+      },
+      {
+        "number": 3,
+        "title": "Start Sending Money",
+        "description": "Send money to India instantly. Your recipient receives funds in their bank account within 15 minutes.",
+        "icon": "send"
+      }
+    ],
+    "compliance": {
+      "title": "100% Compliant and Safe",
+      "description": "Your money is transferred within minutes to the destination with complete security and regulatory compliance. We are licensed by FIU in India and registered as MSB in the USA.",
+      "button": "Start Your Transfer"
+    }
+  },
+  "features": {
+    "title": "Why Choose AtomX Pay?",
+    "subtitle": "Experience the future of international money transfers with blockchain technology",
+    "cards": [
+      {
+        "icon": "globe",
+        "title": "Powered by Blockchain Rails",
+        "description": "Money moves like WhatsApp messages or emails — instantly across borders. No intermediaries or hidden costs. Transfers are direct, transparent, faster, cheaper, and more reliable."
+      },
+      {
+        "icon": "clock",
+        "title": "Near Real-Time Delivery",
+        "description": "Send money in under 15 minutes — anytime, anywhere."
+      },
+      {
+        "icon": "shield",
+        "title": "24×7×365 Availability",
+        "description": "No banking holidays, no cut-off times. Your money moves when you need it to."
+      },
+      {
+        "icon": "trending-up",
+        "title": "No Preloaded Inventory",
+        "description": "Always get live Google exchange rates, never pre-set or marked-up rates from locked currency pools."
+      },
+      {
+        "icon": "shield",
+        "title": "Safe & Secure",
+        "description": "Protected with bank-grade SSL encryption and multi-layer security protocols."
+      },
+      {
+        "icon": "dollar-sign",
+        "title": "Zero FX Margin",
+        "description": "Get the exact Google exchange rate with no hidden markups or margins"
+      },
+      {
+        "icon": "check-circle",
+        "title": "Flat $3 Fee",
+        "description": "Simple, transparent pricing with just $3 flat fee on all transfers"
+      },
+      {
+        "icon": "send",
+        "title": "Quick Transfers",
+        "description": "Money reaches your recipient in under 15 minutes, guaranteed"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Our Customers Say",
+    "subtitle": "Join thousands of satisfied customers who trust AtomX Pay",
+    "reviews": [
+      {
+        "rating": 5,
+        "text": "AtomX Pay saved me hundreds of dollars in fees. The transfer was completed in 12 minutes - incredible!",
+        "author": {
+          "name": "Raj Patel",
+          "title": "Software Engineer",
+          "location": "San Francisco"
+        }
+      },
+      {
+        "rating": 5,
+        "text": "Finally, a transparent service! No hidden fees, real exchange rates, and super fast transfers.",
+        "author": {
+          "name": "Priya Sharma",
+          "title": "Doctor",
+          "location": "New York"
+        }
+      },
+      {
+        "rating": 5,
+        "text": "The blockchain tracking gives me complete peace of mind. I can see exactly where my money is.",
+        "author": {
+          "name": "Amit Kumar",
+          "title": "Business Owner",
+          "location": "Chicago"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Get answers to common questions about AtomX Pay",
+    "questions": [
+      {
+        "question": "How do I send money with AtomX Pay?",
+        "answer": "You can initiate a transfer directly through our app or website. Simply: Select the country and amount you want to send, Choose your recipient, Fund the transfer using your preferred payment method, Track the transfer in real time until it reaches the recipient."
+      },
+      {
+        "question": "What payment methods are supported?",
+        "answer": "AtomX Pay supports: Bank transfers (ACH, IMPS, NEFT, RTGS depending on the country), Debit and credit cards, UPI (for India-based senders), Additional local payment rails where available."
+      },
+      {
+        "question": "How long does a transfer take?",
+        "answer": "Most transfers are completed in under 15 minutes. Timing may vary slightly depending on: The sending/receiving bank's processing hours, Local regulatory checks or additional verification requirements."
+      },
+      {
+        "question": "Why should I trust AtomX Pay?",
+        "answer": "Compliance first: AtomX Pay is fully licensed and compliant with international AML/CFT regulations. Transparent pricing: We offer guaranteed Google exchange rates with no hidden spreads. Secure technology: All transfers are powered by blockchain rails with bank-grade encryption. Proven track record: Trusted by global Indians for fast, reliable cross-border remittances."
+      },
+      {
+        "question": "What are the transfer fees?",
+        "answer": "We charge a low, flat service fee per transfer, clearly displayed before you confirm your transaction. There are no hidden charges or exchange mark-ups — you always get the exact rate shown."
+      },
+      {
+        "question": "Which documents are required for KYC?",
+        "answer": "To comply with regulatory requirements, you'll need to provide: A valid government-issued photo ID (passport, Aadhaar, driver's license, or equivalent), Proof of address (utility bill, bank statement, or rental agreement), In some cases, additional documents may be requested depending on the amount and destination country."
+      }
+    ]
+  },
+  "blog": {
+    "title": "Latest News & Insights",
+    "subtitle": "Stay updated with the latest in remittances and fintech",
+    "posts": [
+      {
+        "title": "The Future of Cross-Border Payments",
+        "excerpt": "Blockchain technology is revolutionizing how we send money across borders. Learn about the latest trends and innovations.",
+        "date": "March 15, 2025",
+        "readTime": "5 min read"
+      },
+      {
+        "title": "Understanding Exchange Rates",
+        "excerpt": "Get insights into how exchange rates work and why transparent pricing matters for international transfers.",
+        "date": "March 10, 2025",
+        "readTime": "3 min read"
+      },
+      {
+        "title": "Regulatory Compliance in Fintech",
+        "excerpt": "Why regulatory compliance is crucial for secure money transfers and how AtomX Pay ensures full compliance.",
+        "date": "March 5, 2025",
+        "readTime": "4 min read"
+      }
+    ]
+  },
+  "footer": {
+    "company": {
+      "name": "AtomX Pay",
+      "description": "Revolutionizing cross-border payments with blockchain technology. Fast, secure, and transparent money transfers to India."
+    },
+    "sections": [
+      {
+        "title": "Product",
+        "links": [
+          { "label": "Send Money", "href": "#" },
+          { "label": "Exchange Rates", "href": "#" },
+          { "label": "Mobile App", "href": "#" },
+          { "label": "API", "href": "#" }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "href": "#" },
+          { "label": "Careers", "href": "#" },
+          { "label": "Press", "href": "#" },
+          { "label": "Blog", "href": "#" }
+        ]
+      },
+      {
+        "title": "Support",
+        "links": [
+          { "label": "Help Center", "href": "#" },
+          { "label": "Contact Us", "href": "#" },
+          { "label": "Security", "href": "#" },
+          { "label": "Status", "href": "#" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Privacy Policy", "href": "#" },
+          { "label": "Terms of Service", "href": "#" },
+          { "label": "Compliance", "href": "#" },
+          { "label": "Licenses", "href": "#" }
+        ]
+      }
+    ],
+    "contact": {
+      "usa": {
+        "title": "USA Office",
+        "address": "123 Financial District, New York, NY 10004",
+        "phone": "+1 (555) 123-4567",
+        "email": "usa@atomxpay.com"
+      },
+      "india": {
+        "title": "India Office",
+        "address": "456 Tech Park, Bangalore, Karnataka 560001",
+        "phone": "+91 80 1234 5678",
+        "email": "india@atomxpay.com"
+      }
+    },
+    "social": [
+      { "platform": "twitter", "url": "https://twitter.com/atomxpay" },
+      { "platform": "linkedin", "url": "https://linkedin.com/company/atomxpay" },
+      { "platform": "facebook", "url": "https://facebook.com/atomxpay" }
+    ],
+    "copyright": "© 2025 AtomX Pay. All rights reserved."
+  }
+}
+
