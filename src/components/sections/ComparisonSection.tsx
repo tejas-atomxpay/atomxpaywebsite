@@ -117,8 +117,8 @@ const ComparisonSection: React.FC = () => {
     <section id="comparison" className="py-12 bg-gray-200">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8 lg:mb-10">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-3 px-4 text-gray-900">{comparison.title}</h2>
-          <h3 className="text-lg lg:text-xl font-semibold mb-3 text-gray-600 px-4">{comparison.subtitle}</h3>
+          <h2 className="text-2xl lg:text-3xl font-bold mb-3 px-4 text-black">{comparison.title}</h2>
+          <h3 className="text-lg lg:text-xl font-semibold mb-3 text-gray-800 px-4">{comparison.subtitle}</h3>
           {/* <p className="text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             {comparison.description}
           </p> */}
