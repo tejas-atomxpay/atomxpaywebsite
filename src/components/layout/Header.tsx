@@ -47,9 +47,9 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
             <button className="text-white/95 hover:text-white font-medium transition-colors cursor-pointer drop-shadow-sm" type="button">
               {navigation.authButtons.signIn}
             </button>
-            <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button" style={{filter: 'url(#atomx-glow)'}}>
+            <button className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button" style={{filter: 'url(#atomx-glow)'}}>
               <span className="relative z-10">{navigation.authButtons.signUp}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-200/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
           </div>
 
@@ -85,16 +85,16 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                   type="button"
                 >
                   {link.label}
-                  {activeSection === link.id && <span className="ml-2 text-orange-400">•</span>}
+                  {activeSection === link.id && <span className="ml-2 text-accent">•</span>}
                 </button>
               ))}
               <div className="pt-4 border-t border-white/10">
                 <button className="block w-full text-left text-white/95 hover:text-white font-medium mb-2 transition-colors cursor-pointer drop-shadow-sm" type="button">
                   {navigation.authButtons.signIn}
                 </button>
-                <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button">
+                <button className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button">
                   <span className="relative z-10">{navigation.authButtons.signUp}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-200/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </button>
               </div>
             </div>

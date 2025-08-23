@@ -7,49 +7,49 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-brand: 'Marmelad', ui-serif, serif;
   
-  /* Robinhood-inspired dark theme colors */
+  /* AtomX Brand Colors - Dark Theme */
   --color-background: #000000;
   --color-foreground: #ffffff;
   --color-card: #111111;
   --color-card-foreground: #ffffff;
   --color-popover: #111111;
   --color-popover-foreground: #ffffff;
-  --color-primary: #8b5cf6;
-  --color-primary-foreground: #000000;
+  --color-primary: #5e29a3;
+  --color-primary-foreground: #ffffff;
   --color-secondary: #1f1f1f;
   --color-secondary-foreground: #ffffff;
   --color-muted: #1f1f1f;
   --color-muted-foreground: #a3a3a3;
-  --color-accent: #8b5cf6;
-  --color-accent-foreground: #000000;
+  --color-accent: #f05a2b;
+  --color-accent-foreground: #ffffff;
   --color-destructive: #ef4444;
   --color-border: #374151;
   --color-input: #374151;
-  --color-ring: #8b5cf6;
+  --color-ring: #5e29a3;
   
   --radius: 0.625rem;
 }
 
 :root {
-  /* Enhanced AtomX Design System - Robinhood Inspired */
-  --atomx-primary: #8b5cf6;
-  --atomx-accent: #8b5cf6;
-  --atomx-neon: #c084fc;
+  /* Enhanced AtomX Design System - Brand Colors */
+  --atomx-primary: #5e29a3;
+  --atomx-accent: #f05a2b;
+  --atomx-neon: #7c3aed;
   --atomx-dark: #0a0a0a;
   --atomx-darker: #000000;
   
   /* Gradient Definitions */
-  --atomx-gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #c084fc 100%);
-  --atomx-gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
-  --atomx-gradient-trust: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(192, 132, 252, 0.1) 100%);
+  --atomx-gradient-primary: linear-gradient(135deg, #5e29a3 0%, #7c3aed 100%);
+  --atomx-gradient-accent: linear-gradient(135deg, #f05a2b 0%, #ff6b35 100%);
+  --atomx-gradient-trust: linear-gradient(135deg, rgba(94, 41, 163, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
   --atomx-gradient-dark: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
   
   /* Shader Colors */
-  --shader-trust: rgba(139, 92, 246, 0.1);
-  --shader-success: rgba(139, 92, 246, 0.1);
-  --shader-warning: rgba(251, 191, 36, 0.1);
-  --shader-accent: rgba(192, 132, 252, 0.1);
-  --shader-glow: rgba(139, 92, 246, 0.3);
+  --shader-trust: rgba(94, 41, 163, 0.1);
+  --shader-success: rgba(94, 41, 163, 0.1);
+  --shader-warning: rgba(240, 90, 43, 0.1);
+  --shader-accent: rgba(240, 90, 43, 0.1);
+  --shader-glow: rgba(94, 41, 163, 0.3);
   
   /* Animation Timing System */
   --timing-instant: 150ms;
@@ -180,7 +180,7 @@
 
 .hover-lift:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+  box-shadow: 0 20px 40px rgba(94, 41, 163, 0.15);
   filter: brightness(1.05);
 }
 
@@ -202,19 +202,19 @@
 /* Pulsing Animations */
 @keyframes pulse-trust {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 0 0 rgba(94, 41, 163, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 10px rgba(94, 41, 163, 0);
   }
 }
 
 @keyframes pulse-success {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 0 0 rgba(94, 41, 163, 0.4);
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    box-shadow: 0 0 0 10px rgba(94, 41, 163, 0);
   }
 }
 

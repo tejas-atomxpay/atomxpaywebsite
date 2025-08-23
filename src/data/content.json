@@ -160,33 +160,33 @@
     "cards": [
       {
         "icon": "globe",
-        "title": "Powered by Blockchain Rails",
-        "description": "Money moves like WhatsApp messages or emails — instantly across borders. No intermediaries or hidden costs. Transfers are direct, transparent, faster, cheaper, and more reliable."
+        "title": "Blockchain-Powered Infrastructure",
+        "description": "Leverage cutting-edge blockchain technology for direct, transparent cross-border transfers without traditional banking intermediaries or hidden fees."
       },
       {
         "icon": "clock",
-        "title": "Near Real-Time Delivery",
-        "description": "Send money in under 15 minutes — anytime, anywhere."
+        "title": "15-Minute Global Transfers",
+        "description": "Experience lightning-fast international money transfers completed in under 15 minutes, available 24/7 without banking delays or cut-off times."
       },
       {
         "icon": "shield",
-        "title": "24×7×365 Availability",
-        "description": "No banking holidays, no cut-off times. Your money moves when you need it to."
+        "title": "Enterprise-Grade Security",
+        "description": "Your transfers are protected by bank-level SSL encryption, multi-layer security protocols, and full regulatory compliance across all jurisdictions."
       },
       {
         "icon": "trending-up",
-        "title": "No Preloaded Inventory",
-        "description": "Always get live Google exchange rates, never pre-set or marked-up rates from locked currency pools."
-      },
-      {
-        "icon": "shield",
-        "title": "Safe & Secure",
-        "description": "Protected with bank-grade SSL encryption and multi-layer security protocols."
+        "title": "Real-Time Exchange Rates",
+        "description": "Access live exchange rates with zero markup or margin. No pre-loaded currency pools or locked-in rates - just transparent, real-time pricing."
       },
       {
         "icon": "dollar-sign",
-        "title": "Zero FX Margin",
-        "description": "Get the exact Google exchange rate with no hidden markups or margins"
+        "title": "Simple $3 Flat Fee",
+        "description": "Transparent pricing with no hidden costs. Pay just $3 per transfer regardless of amount - no percentage fees, no surprises, no markups."
+      },
+      {
+        "icon": "check-circle",
+        "title": "24/7 Availability",
+        "description": "Send money anytime, anywhere. Our blockchain infrastructure operates continuously without banking holidays, maintenance windows, or geographical restrictions."
       },
       {
         "icon": "check-circle",
