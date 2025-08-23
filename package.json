@@ -8,9 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "security:audit": "npm audit --audit-level moderate",
-    "security:check": "npm run security:audit && npm run lint",
-    "prebuild": "npm run security:check"
+    "security:audit": "pnpm audit --audit-level moderate",
+    "security:check": "pnpm run security:audit && pnpm run lint",
+    "prebuild": "pnpm run security:check"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -71,7 +71,7 @@
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.4.1",
-    "eslint": "^9.25.0",
+    "eslint": "^9.34.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",

@@ -13,7 +13,11 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:composio.dev)",
       "WebFetch(domain:motion.dev)",
-      "Bash(pnpm add:*)"
+      "Bash(pnpm add:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm audit:*)",
+      "Bash(pnpm update:*)",
+      "Bash(pnpm install:*)"
     ],
     "deny": [],
     "ask": []
