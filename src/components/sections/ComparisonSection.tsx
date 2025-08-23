@@ -88,10 +88,10 @@ const ComparisonSection: React.FC = () => {
             {provider.highlight && (
               <div className="absolute -left-1 top-0 bottom-0 w-1 atomx-gradient rounded-r pulse-trust"></div>
             )}
-            <div className="flex items-center gap-2">
-              <span className="whitespace-nowrap">{provider.name}</span>
+            <div className="flex items-center gap-2 min-h-[1.5rem]">
+              <span className="whitespace-nowrap leading-none">{provider.name}</span>
               {provider.highlight && (
-                <span className="bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap animate-pulse" style={{filter: 'url(#atomx-glow)'}}>
+                <span className="bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap animate-pulse leading-none" style={{filter: 'url(#atomx-glow)'}}>
                   BEST
                 </span>
               )}
