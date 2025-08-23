@@ -84,16 +84,16 @@ const ComparisonSection: React.FC = () => {
               : 'hover:bg-gray-50'
           }`}
         >
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 relative text-sm sm:text-base ${
+          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 relative text-sm sm:text-base font-technical ${
             provider.highlight ? 'font-bold text-purple-700' : 'font-medium'
           }`}>
             {provider.highlight && (
-              <div className="absolute -left-1 top-0 bottom-0 w-1 atomx-gradient rounded-r"></div>
+              <div className="absolute -left-1 top-0 bottom-0 w-1 atomx-gradient rounded-r pulse-trust"></div>
             )}
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
               <span className="whitespace-nowrap">{provider.name}</span>
               {provider.highlight && (
-                <span className="bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap">
+                <span className="bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap animate-pulse" style={{filter: 'url(#atomx-glow)'}}>
                   BEST
                 </span>
               )}

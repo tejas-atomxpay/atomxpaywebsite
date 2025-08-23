@@ -15,11 +15,9 @@
     }
   },
   "hero": {
-    "title": "Global Remittances for Indians in Less Than 15 Minutes",
+    "title": "Global Remittances in Less Than 15 Minutes",
     "subtitle": "No preloaded inventory. No correspondent banks. Just transparent, real-time transfers powered by blockchain rails.",
     "trustBadges": [
-      { "text": "FIU Licensed India", "icon": "check" },
-      { "text": "MSB Registered USA", "icon": "check" },
       { "text": "100% Compliant", "icon": "check" }
     ],
     "buttons": {

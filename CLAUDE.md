@@ -77,3 +77,13 @@ src/
 - CSS injection prevention in chart components
 - Dependency security: `.nvmrc`, `.npmrc`, and audit scripts in `package.json`
 - See `SECURITY.md` for comprehensive security documentation
+
+### Design System Enhancements
+- **MeshGradient Backgrounds**: @paper-design/shaders-react for sophisticated visual effects
+- **Glass Morphism**: Advanced backdrop-blur effects with custom CSS classes
+- **Animation System**: Custom timing functions and easing curves for premium feel
+- **Typography**: Inter font family for technical sections, Marmelad for brand elements
+- **Color Palette**: Enhanced CSS custom properties with shader-specific colors
+- **SVG Filters**: Advanced visual effects (glass, glow, gooey) defined in `index.html`
+- **Micro-Interactions**: Pulsing animations, hover effects, and shine transitions
+- **Component Enhancements**: FeatureCard, ExchangeRateWidget, Header with premium effects

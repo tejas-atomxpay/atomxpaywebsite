@@ -12,7 +12,8 @@
       "WebFetch(domain:robinhood.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:composio.dev)",
-      "WebFetch(domain:motion.dev)"
+      "WebFetch(domain:motion.dev)",
+      "Bash(pnpm add:*)"
     ],
     "deny": [],
     "ask": []

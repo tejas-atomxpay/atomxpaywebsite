@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
   const { navigation } = content;
 
   return (
-    <header className="atomx-primary shadow-sm sticky top-0 z-50">
+    <header className="shadow-sm sticky top-0 z-50 backdrop-blur-md border-b border-white/20" style={{background: 'linear-gradient(135deg, rgba(94, 41, 163, 0.92) 0%, rgba(124, 58, 237, 0.88) 100%)'}}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -29,8 +29,8 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                 onClick={() => scrollToSection(link.id)}
                 className={`transition-colors font-medium cursor-pointer relative ${
                   activeSection === link.id 
-                    ? 'text-white' 
-                    : 'text-white/90 hover:text-white'
+                    ? 'text-white drop-shadow-sm' 
+                    : 'text-white/95 hover:text-white drop-shadow-sm'
                 }`}
                 type="button"
               >
@@ -44,11 +44,12 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
           
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-white/90 hover:text-white font-medium transition-colors cursor-pointer" type="button">
+            <button className="text-white/95 hover:text-white font-medium transition-colors cursor-pointer drop-shadow-sm" type="button">
               {navigation.authButtons.signIn}
             </button>
-            <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer" type="button">
-              {navigation.authButtons.signUp}
+            <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button" style={{filter: 'url(#atomx-glow)'}}>
+              <span className="relative z-10">{navigation.authButtons.signUp}</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-200/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </button>
           </div>
 
@@ -76,10 +77,10 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                     scrollToSection(link.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`text-left transition-colors font-medium cursor-pointer ${
+                  className={`text-left transition-colors font-medium cursor-pointer drop-shadow-sm ${
                     activeSection === link.id 
                       ? 'text-white font-semibold' 
-                      : 'text-white/90 hover:text-white'
+                      : 'text-white/95 hover:text-white'
                   }`}
                   type="button"
                 >
@@ -88,11 +89,12 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                 </button>
               ))}
               <div className="pt-4 border-t border-white/10">
-                <button className="block w-full text-left text-white/90 hover:text-white font-medium mb-2 transition-colors cursor-pointer" type="button">
+                <button className="block w-full text-left text-white/95 hover:text-white font-medium mb-2 transition-colors cursor-pointer drop-shadow-sm" type="button">
                   {navigation.authButtons.signIn}
                 </button>
-                <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer" type="button">
-                  {navigation.authButtons.signUp}
+                <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button">
+                  <span className="relative z-10">{navigation.authButtons.signUp}</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-200/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </button>
               </div>
             </div>

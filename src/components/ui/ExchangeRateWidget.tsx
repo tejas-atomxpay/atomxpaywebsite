@@ -39,26 +39,29 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md w-full">
-      <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">{calculator.title}</h3>
+    <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md w-full glass-morphism hover-lift relative overflow-hidden group">
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 atomx-gradient-trust opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+      <div className="relative z-10">
+        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center font-technical">{calculator.title}</h3>
       
-      {/* Quick Amount Buttons */}
-      <div className="flex gap-2 mb-6">
-        {[500, 1000, 2000, 5000].map((amount) => (
-          <button
-            key={amount}
-            onClick={() => handleQuickAmount(amount)}
-            className={`flex-1 py-2 px-3 text-sm rounded-lg border transition-colors ${
-              usdAmount === amount 
-                ? 'bg-purple-100 border-purple-300 text-purple-700' 
-                : 'border-gray-300 hover:border-purple-300 hover:bg-purple-50'
-            }`}
-            type="button"
-          >
-            ${amount.toLocaleString()}
-          </button>
-        ))}
-      </div>
+        {/* Quick Amount Buttons with Enhanced Effects */}
+        <div className="flex gap-2 mb-6">
+          {[500, 1000, 2000, 5000].map((amount) => (
+            <button
+              key={amount}
+              onClick={() => handleQuickAmount(amount)}
+              className={`flex-1 py-2 px-3 text-sm rounded-lg border transition-all duration-300 font-technical hover-lift ${
+                usdAmount === amount 
+                  ? 'bg-purple-100 border-purple-300 text-purple-700 pulse-trust' 
+                  : 'border-gray-300 hover:border-purple-300 hover:bg-purple-50 glass-morphism-dark'
+              }`}
+              type="button"
+            >
+              ${amount.toLocaleString()}
+            </button>
+          ))}
+        </div>
       
       <div className="space-y-4">
         <div>
@@ -136,24 +139,29 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
         )}
       </div>
       
-      <button 
-        className={`w-full py-4 rounded-lg text-lg font-semibold mt-6 transition-all ${
-          inputError || usdAmount <= 0
-            ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-            : 'atomx-accent text-white hover:opacity-90 hover:transform hover:scale-105'
-        }`} 
-        type="button"
-        disabled={inputError !== '' || usdAmount <= 0}
-      >
-        {isLoading ? (
-          <div className="flex items-center justify-center gap-2">
-            <RefreshCw className="w-5 h-5 animate-spin" />
-            <span>Calculating...</span>
-          </div>
-        ) : (
-          calculator.button
-        )}
-      </button>
+        <button 
+          className={`w-full py-4 rounded-lg text-lg font-semibold mt-6 transition-all font-technical btn-gooey relative overflow-hidden group ${
+            inputError || usdAmount <= 0
+              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              : 'atomx-gradient-accent text-white hover-lift'
+          }`} 
+          type="button"
+          disabled={inputError !== '' || usdAmount <= 0}
+          style={inputError || usdAmount <= 0 ? {} : {filter: 'url(#atomx-glow)'}}
+        >
+          {isLoading ? (
+            <div className="flex items-center justify-center gap-2 relative z-10">
+              <RefreshCw className="w-5 h-5 animate-spin" />
+              <span>Calculating...</span>
+            </div>
+          ) : (
+            <span className="relative z-10">{calculator.button}</span>
+          )}
+          {!inputError && usdAmount > 0 && (
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+          )}
+        </button>
+      </div>
     </div>
   );
 };

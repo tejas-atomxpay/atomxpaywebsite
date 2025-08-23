@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Inter:wght@300;400;500;600;700&display=swap');
 @import 'lenis/dist/lenis.css';
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -76,6 +76,31 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Enhanced AtomX Design System */
+  --atomx-primary: #5e29a3;
+  --atomx-accent: #f05a2b;
+  
+  /* Gradient Definitions */
+  --atomx-gradient-primary: linear-gradient(135deg, #5e29a3 0%, #7c3aed 100%);
+  --atomx-gradient-accent: linear-gradient(135deg, #f05a2b 0%, #ff6b35 100%);
+  --atomx-gradient-trust: linear-gradient(135deg, rgba(94, 41, 163, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+  
+  /* Shader Colors */
+  --shader-trust: rgba(94, 41, 163, 0.1);
+  --shader-success: rgba(16, 185, 129, 0.1);
+  --shader-warning: rgba(245, 158, 11, 0.1);
+  --shader-accent: rgba(240, 90, 43, 0.1);
+  
+  /* Animation Timing System */
+  --timing-instant: 150ms;
+  --timing-fast: 300ms;
+  --timing-normal: 500ms;
+  --timing-slow: 1000ms;
+  
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .dark {
@@ -120,27 +145,63 @@
     @apply bg-background text-foreground;
     font-family: 'Marmelad', sans-serif;
   }
+  
+  /* Technical sections use Inter */
+  .font-technical {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Smooth animations */
+  .animate-smooth {
+    transition: all var(--timing-normal) var(--ease-out-cubic);
+  }
+  
+  .animate-bounce-in {
+    animation: bounceIn var(--timing-normal) var(--ease-bounce) forwards;
+  }
+  
+  @keyframes bounceIn {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
-/* AtomX Pay Custom Styles */
+/* AtomX Pay Enhanced Custom Styles */
 .atomx-primary {
-  background-color: #5e29a3;
+  background-color: var(--atomx-primary);
 }
 
 .atomx-accent {
-  background-color: #f05a2b;
+  background-color: var(--atomx-accent);
 }
 
 .atomx-gradient {
-  background: linear-gradient(135deg, #5e29a3 0%, #7c3aed 100%);
+  background: var(--atomx-gradient-primary);
+}
+
+.atomx-gradient-accent {
+  background: var(--atomx-gradient-accent);
+}
+
+.atomx-gradient-trust {
+  background: var(--atomx-gradient-trust);
 }
 
 .atomx-text-primary {
-  color: #5e29a3;
+  color: var(--atomx-primary);
 }
 
 .atomx-text-accent {
-  color: #f05a2b;
+  color: var(--atomx-accent);
 }
 
 .smooth-scroll {
@@ -148,10 +209,94 @@
 }
 
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--timing-fast) var(--ease-out-cubic), 
+              box-shadow var(--timing-fast) var(--ease-out-cubic),
+              filter var(--timing-fast) var(--ease-out-cubic);
 }
 
 .hover-lift:hover {
-  transform: translateY(-4px);
+  transform: translateY(-4px) scale(1.02);
   box-shadow: 0 20px 40px rgba(94, 41, 163, 0.15);
+  filter: brightness(1.05);
+}
+
+/* Glass Morphism Effects */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.glass-morphism-dark {
+  background: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Pulsing Animations */
+@keyframes pulse-trust {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(94, 41, 163, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(94, 41, 163, 0);
+  }
+}
+
+@keyframes pulse-success {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-trust {
+  animation: pulse-trust 2s infinite;
+}
+
+.pulse-success {
+  animation: pulse-success 2s infinite;
+}
+
+/* Premium Button Effects */
+.btn-gooey {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gooey::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left var(--timing-slow) var(--ease-out-cubic);
+}
+
+.btn-gooey:hover::before {
+  left: 100%;
+}
+
+/* Shader Background Container */
+.shader-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.shader-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity var(--timing-normal) var(--ease-out-cubic);
+}
+
+.shader-container:hover .shader-overlay {
+  opacity: 0.8;
 }
