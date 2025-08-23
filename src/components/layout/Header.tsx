@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import logoImage from '../../assets/logo.png';
+import logoInitial from '../../assets/logo_initial.png';
+import companyName from '../../assets/company_name.png';
 import content from '../../data/content.json';
 
 interface HeaderProps {
@@ -12,13 +13,13 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
   const { navigation } = content;
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="atomx-primary shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <img src={logoImage} alt="AtomX Pay" className="h-10 w-10 mr-3" />
-            <span className="text-xl font-bold atomx-text-primary">{navigation.logo}</span>
+          <div className="flex items-center gap-3">
+            {/* <img src={logoInitial} alt="AtomX Pay Initial" className="h-8 w-auto brightness-0 invert" /> */}
+            <img src={companyName} alt="AtomX Pay" className="h-[200px] w-auto" />
           </div>
           
           {/* Desktop Navigation */}
@@ -27,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
               <button 
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-700 hover:atomx-text-primary transition-colors"
+                className="text-white/90 hover:text-white transition-colors font-medium cursor-pointer"
                 type="button"
               >
                 {link.label}
@@ -37,10 +38,10 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
           
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="atomx-text-primary font-medium hover:underline" type="button">
+            <button className="text-white/90 hover:text-white font-medium transition-colors cursor-pointer" type="button">
               {navigation.authButtons.signIn}
             </button>
-            <button className="atomx-accent text-white px-6 py-2 rounded-lg hover:opacity-90 transition-opacity" type="button">
+            <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer" type="button">
               {navigation.authButtons.signUp}
             </button>
           </div>
@@ -67,17 +68,17 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection }) => {
                     scrollToSection(link.id);
                     setIsMenuOpen(false);
                   }}
-                  className="text-left text-gray-700 hover:atomx-text-primary"
+                  className="text-left text-white/90 hover:text-white transition-colors font-medium cursor-pointer"
                   type="button"
                 >
                   {link.label}
                 </button>
               ))}
-              <div className="pt-4 border-t">
-                <button className="block w-full text-left atomx-text-primary font-medium mb-2" type="button">
+              <div className="pt-4 border-t border-white/10">
+                <button className="block w-full text-left text-white/90 hover:text-white font-medium mb-2 transition-colors cursor-pointer" type="button">
                   {navigation.authButtons.signIn}
                 </button>
-                <button className="atomx-accent text-white px-6 py-2 rounded-lg hover:opacity-90 transition-opacity" type="button">
+                <button className="bg-white text-purple-700 px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer" type="button">
                   {navigation.authButtons.signUp}
                 </button>
               </div>

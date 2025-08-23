@@ -16,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const { hero } = content;
 
   return (
-    <section className="atomx-primary text-white py-20 min-h-screen flex items-center">
+    <section className="bg-white text-black py-20 min-h-screen flex items-center">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">

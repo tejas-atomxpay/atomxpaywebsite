@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import './App.css';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
@@ -15,10 +16,40 @@ const App: React.FC = () => {
   const [usdAmount, setUsdAmount] = useState<number>(1000);
   const { exchangeRate, isLoading, lastUpdated } = useCurrencyAPI();
 
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2
+    });
+
+    // Make lenis instance globally available
+    window.lenis = lenis;
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+      window.lenis = undefined;
+    };
+  }, []);
+
   const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (element && window.lenis) {
+      window.lenis.scrollTo(element, { 
+        offset: -80, // Offset for the fixed header
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      });
     }
   };
 
