@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold mb-4">{footer.contact.usa.title}</h3>
             <div className="text-gray-400 space-y-2">
               <p>{footer.contact.usa.address}</p>
-              <p>{footer.contact.usa.phone}</p>
+              {/* <p>{footer.contact.usa.phone}</p> */}
               <p>{footer.contact.usa.email}</p>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold mb-4">{footer.contact.india.title}</h3>
             <div className="text-gray-400 space-y-2">
               <p>{footer.contact.india.address}</p>
-              <p>{footer.contact.india.phone}</p>
+              {/* <p>{footer.contact.india.phone}</p> */}
               <p>{footer.contact.india.email}</p>
             </div>
           </div>

@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
           </div>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* <div className="hidden md:flex items-center space-x-8">
             {navigation.links.map((link) => (
               <button 
                 key={link.id}
@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                 )}
               </button>
             ))}
-          </div>
+          </div> */}
           
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
         }`}>
           <div className="py-4 border-t">
             <div className="flex flex-col space-y-4">
-              {navigation.links.map((link) => (
+              {/* {navigation.links.map((link) => (
                 <button 
                   key={link.id}
                   onClick={() => {
@@ -87,8 +87,8 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
                   {link.label}
                   {activeSection === link.id && <span className="ml-2 text-orange-400">•</span>}
                 </button>
-              ))}
-              <div className="pt-4 border-t border-white/10">
+              ))} */}
+              <div className="pt-4 border-white/10">
                 <button className="block w-full text-left text-white/95 hover:text-white font-medium mb-2 transition-colors cursor-pointer drop-shadow-sm" type="button">
                   {navigation.authButtons.signIn}
                 </button>

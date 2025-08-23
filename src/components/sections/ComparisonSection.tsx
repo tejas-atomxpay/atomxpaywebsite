@@ -8,16 +8,16 @@ const ComparisonSection: React.FC = () => {
     return (
       <div 
         key={index}
-        className={`p-4 rounded-xl shadow-lg transition-all duration-300 ${
+        className={`p-3 rounded-xl shadow-lg transition-all duration-300 ${
           provider.highlight 
-            ? 'bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 border-2 border-purple-400 shadow-xl transform scale-[1.02] shadow-purple-500/20'
-            : 'bg-gray-800 border border-gray-600 hover:bg-gray-700 hover:shadow-xl hover:-translate-y-1 hover:border-gray-500'
+            ? 'bg-gradient-to-br from-purple-50 via-purple-100 to-purple-50 border-2 border-purple-400 shadow-xl transform scale-[1.02] shadow-purple-500/20'
+            : 'bg-white border border-gray-300 hover:bg-gray-50 hover:shadow-xl hover:-translate-y-1 hover:border-gray-400'
         }`}
       >
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
-            <h3 className={`font-bold text-lg ${
-              provider.highlight ? 'text-purple-400' : 'text-white'
+            <h3 className={`font-bold text-base ${
+              provider.highlight ? 'text-purple-600' : 'text-gray-900'
             }`}>
               {provider.name}
             </h3>
@@ -29,40 +29,38 @@ const ComparisonSection: React.FC = () => {
           </div>
         </div>
         
-        <div className="space-y-3">
+        <div className="space-y-2">
           <div className="flex justify-between items-start">
-            <span className="text-sm text-gray-400 font-medium">Exchange Rate:</span>
+            <span className="text-sm text-gray-600 font-medium">Exchange Rate:</span>
             <div className={`text-sm font-semibold text-right ${
-              provider.highlight ? 'text-green-400' : 'text-gray-200'
+              provider.highlight ? 'text-green-600' : 'text-gray-700'
             }`}>
-              {provider.exchangeRate.replace(' (', '\n(').split('\n').map((line: string, i: number) => (
-                <div key={i} className={i === 1 ? 'text-xs text-gray-400 font-normal' : ''}>{line}</div>
-              ))}
+              {provider.exchangeRate}
             </div>
           </div>
           
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-400 font-medium">Transfer Fee:</span>
+            <span className="text-sm text-gray-600 font-medium">Transfer Fee:</span>
             <span className={`text-sm font-semibold ${
-              provider.highlight ? 'text-green-400' : 'text-gray-200'
+              provider.highlight ? 'text-green-600' : 'text-gray-700'
             }`}>
               {provider.transferFee}
             </span>
           </div>
           
           <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-400 font-medium">You Receive:</span>
-            <span className={`text-lg font-bold ${
-              provider.highlight ? 'text-green-400' : 'text-white'
+            <span className="text-sm text-gray-600 font-medium">You Receive:</span>
+            <span className={`text-base font-bold ${
+              provider.highlight ? 'text-green-600' : 'text-gray-900'
             }`}>
               {provider.recipientGets}
             </span>
           </div>
           
-          <div className="flex justify-between items-center pt-2 border-t border-gray-600">
-            <span className="text-sm text-gray-400 font-medium">Transfer Time:</span>
+          <div className="flex justify-between items-center pt-2 border-t border-gray-300">
+            <span className="text-sm text-gray-600 font-medium">Transfer Time:</span>
             <span className={`text-sm font-semibold ${
-              provider.highlight ? 'text-green-400' : 'text-gray-200'
+              provider.highlight ? 'text-green-600' : 'text-gray-700'
             }`}>
               {provider.time}
             </span>
@@ -78,19 +76,19 @@ const ComparisonSection: React.FC = () => {
       .map((provider, index) => (
         <tr 
           key={index} 
-          className={`border-b border-gray-700 transition-all duration-200 ${
+          className={`border-b border-gray-300 transition-all duration-200 ${
             provider.highlight 
-              ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-2 border-purple-400 shadow-md transform scale-[1.02] shadow-purple-500/20' 
-              : 'bg-gray-800 hover:bg-gray-700'
+              ? 'bg-gradient-to-r from-purple-50 to-purple-100 border-2 border-purple-400 shadow-md transform scale-[1.02] shadow-purple-500/20' 
+              : 'bg-white hover:bg-gray-50'
           }`}
         >
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 relative text-sm sm:text-base font-technical ${
-            provider.highlight ? 'font-bold text-purple-400' : 'font-medium text-white'
+          <td className={`py-2 px-2 sm:py-3 sm:px-4 lg:px-6 relative text-sm sm:text-base font-technical ${
+            provider.highlight ? 'font-bold text-purple-600' : 'font-medium text-gray-900'
           }`}>
             {provider.highlight && (
               <div className="absolute -left-1 top-0 bottom-0 w-1 atomx-gradient rounded-r pulse-trust"></div>
             )}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2">
+            <div className="flex items-center gap-2">
               <span className="whitespace-nowrap">{provider.name}</span>
               {provider.highlight && (
                 <span className="bg-gradient-to-r from-purple-600 to-orange-500 text-white text-xs px-1.5 py-0.5 rounded-full font-semibold whitespace-nowrap animate-pulse" style={{filter: 'url(#atomx-glow)'}}>
@@ -99,18 +97,16 @@ const ComparisonSection: React.FC = () => {
               )}
             </div>
           </td>
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-400' : 'text-gray-300'}`}>
-            {provider.exchangeRate.replace(' (', '\n(').split('\n').map((line, i) => (
-              <div key={i} className={i === 1 ? 'text-xs text-gray-400' : ''}>{line}</div>
-            ))}
+          <td className={`py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-600' : 'text-gray-700'}`}>
+            {provider.exchangeRate}
           </td>
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-400' : 'text-gray-300'}`}>
+          <td className={`py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-600' : 'text-gray-700'}`}>
             {provider.transferFee}
           </td>
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-400' : 'text-gray-300'}`}>
+          <td className={`py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-600' : 'text-gray-700'}`}>
             {provider.recipientGets}
           </td>
-          <td className={`py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-400' : 'text-gray-300'}`}>
+          <td className={`py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-xs sm:text-sm lg:text-base whitespace-nowrap ${provider.highlight ? 'font-bold text-green-600' : 'text-gray-700'}`}>
             {provider.time}
           </td>
         </tr>
@@ -118,22 +114,33 @@ const ComparisonSection: React.FC = () => {
   };
 
   return (
-    <section id="comparison" className="py-20 bg-black">
+    <section id="comparison" className="py-12 bg-gray-200">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12 lg:mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4 px-4 text-white">{comparison.title}</h2>
-          <h3 className="text-xl lg:text-2xl font-semibold mb-4 text-gray-300 px-4">{comparison.subtitle}</h3>
-          <p className="text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
+        <div className="text-center mb-8 lg:mb-10">
+          <h2 className="text-2xl lg:text-3xl font-bold mb-3 px-4 text-gray-900">{comparison.title}</h2>
+          <h3 className="text-lg lg:text-xl font-semibold mb-3 text-gray-600 px-4">{comparison.subtitle}</h3>
+          {/* <p className="text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4">
             {comparison.description}
-          </p>
+          </p> */}
         </div>
         
         {/* Mobile Card Layout */}
-        <div className="block lg:hidden space-y-6">
+        <div className="block lg:hidden space-y-3">
+          {/* Blockchain - AtomX Pay First */}
+          <div>
+            <h3 className="text-base font-bold text-purple-600 mb-3 px-4">{comparison.categories.blockchain}</h3>
+            <div className="grid gap-3 px-4">
+              {comparison.providers
+                .filter(provider => provider.category === 'blockchain')
+                .map((provider, index) => renderProviderCard(provider, index))
+              }
+            </div>
+          </div>
+          
           {/* Traditional Banking */}
           <div>
-            <h3 className="text-lg font-bold text-gray-200 mb-4 px-4">{comparison.categories.traditional}</h3>
-            <div className="grid gap-4 px-4">
+            <h3 className="text-base font-bold text-gray-700 mb-3 px-4">{comparison.categories.traditional}</h3>
+            <div className="grid gap-3 px-4">
               {comparison.providers
                 .filter(provider => provider.category === 'traditional')
                 .map((provider, index) => renderProviderCard(provider, index))
@@ -143,21 +150,10 @@ const ComparisonSection: React.FC = () => {
           
           {/* MSB */}
           <div>
-            <h3 className="text-lg font-bold text-gray-200 mb-4 px-4">{comparison.categories.msb}</h3>
-            <div className="grid gap-4 px-4">
+            <h3 className="text-base font-bold text-gray-700 mb-3 px-4">{comparison.categories.msb}</h3>
+            <div className="grid gap-3 px-4">
               {comparison.providers
                 .filter(provider => provider.category === 'msb')
-                .map((provider, index) => renderProviderCard(provider, index))
-              }
-            </div>
-          </div>
-          
-          {/* Blockchain */}
-          <div>
-            <h3 className="text-lg font-bold text-purple-400 mb-4 px-4">{comparison.categories.blockchain}</h3>
-            <div className="grid gap-4 px-4">
-              {comparison.providers
-                .filter(provider => provider.category === 'blockchain')
                 .map((provider, index) => renderProviderCard(provider, index))
               }
             </div>
@@ -166,38 +162,45 @@ const ComparisonSection: React.FC = () => {
         
         {/* Desktop Table Layout */}
         <div className="hidden lg:block overflow-x-auto">
-          <table className="w-full bg-gray-900 rounded-lg shadow-lg overflow-hidden border border-gray-600">
-            <thead className="bg-gray-800">
+          <table className="w-full bg-white rounded-lg shadow-lg overflow-hidden border border-gray-300">
+            <thead className="bg-gray-100">
               <tr>
-                <th className="py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-left font-semibold text-white text-sm sm:text-base">{comparison.tableHeaders.provider}</th>
-                <th className="py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-left font-semibold text-white text-sm sm:text-base">Rate</th>
-                <th className="py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-left font-semibold text-white text-sm sm:text-base">Fee</th>
-                <th className="py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-left font-semibold text-white text-sm sm:text-base">You Get</th>
-                <th className="py-3 px-2 sm:py-4 sm:px-4 lg:px-6 text-left font-semibold text-white text-sm sm:text-base">{comparison.tableHeaders.time}</th>
+                <th className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-left font-semibold text-gray-900 text-sm sm:text-base">{comparison.tableHeaders.provider}</th>
+                <th className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-left font-semibold text-gray-900 text-sm sm:text-base">Rate</th>
+                <th className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-left font-semibold text-gray-900 text-sm sm:text-base">Fee</th>
+                <th className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-left font-semibold text-gray-900 text-sm sm:text-base">You Get</th>
+                <th className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 text-left font-semibold text-gray-900 text-sm sm:text-base">{comparison.tableHeaders.time}</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-gray-700 bg-gray-800">
-                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-gray-200 bg-gray-700 text-sm sm:text-base">
+              <tr className="border-b border-gray-300 bg-gray-50">
+                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-purple-600 bg-gray-50 text-sm sm:text-base">
+                  {comparison.categories.blockchain}
+                </td>
+              </tr>
+              {renderProvidersByCategory('blockchain')}
+              
+              <tr className="border-b border-gray-300 bg-gray-50">
+                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-gray-700 bg-gray-50 text-sm sm:text-base">
                   {comparison.categories.traditional}
                 </td>
               </tr>
               {renderProvidersByCategory('traditional')}
               
-              <tr className="border-b border-gray-700 bg-gray-800">
-                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-gray-200 bg-gray-700 text-sm sm:text-base">
+              <tr className="border-b border-gray-300 bg-gray-50">
+                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-gray-700 bg-gray-50 text-sm sm:text-base">
                   {comparison.categories.msb}
                 </td>
               </tr>
               {renderProvidersByCategory('msb')}
-              
-              <tr className="border-b border-gray-700 bg-gray-800">
-                <td colSpan={5} className="py-2 px-2 sm:py-3 sm:px-4 lg:px-6 font-semibold text-purple-400 bg-gray-700 text-sm sm:text-base">
-                  {comparison.categories.blockchain}
+            </tbody>
+            <tfoot>
+              <tr className="bg-gray-100 border-t-2 border-gray-300">
+                <td colSpan={5} className="py-3 px-2 sm:px-4 lg:px-6 text-center text-sm text-gray-600 font-medium">
+                  * All rates are indicative and subject to change. AtomX Pay offers live market rates with no hidden markups.
                 </td>
               </tr>
-              {renderProvidersByCategory('blockchain')}
-            </tbody>
+            </tfoot>
           </table>
         </div>
       </div>
