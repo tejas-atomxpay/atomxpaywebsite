@@ -31,7 +31,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   }, []);
 
   return (
-    <section className="relative bg-white text-black py-20 min-h-screen flex items-center shader-container overflow-hidden">
+    <section className="relative bg-white text-black py-12 h-[75vh] flex items-center shader-container overflow-hidden">
       {/* MeshGradient Background */}
       {/* <div className="absolute inset-0 shader-overlay">
         <MeshGradient
@@ -60,7 +60,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   style={{ filter: 'url(#atomx-glass)' }}
                 >
                   <Check className="w-5 h-5 mr-2 text-green-700 animate-pulse drop-shadow-sm" />
-                  <span className="text-sm font-medium font-technical">{badge.text}</span>
+                  <span className="text-sm font-bold font-technical">{badge.text}</span>
                 </div>
               ))}
             </div>
@@ -79,12 +79,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   <span className="font-semibold text-orange-600">{transfersToday}</span> transfers today
                 </span>
               </div>
-              <div className="flex items-center gap-2 glass-morphism-dark rounded-full px-3 py-1 animate-bounce-in" style={{animationDelay: '0.5s'}}>
+              {/* <div className="flex items-center gap-2 glass-morphism-dark rounded-full px-3 py-1 animate-bounce-in" style={{animationDelay: '0.5s'}}>
                 <div className="w-3 h-3 bg-green-600 rounded-full pulse-success drop-shadow-sm"></div>
                 <span className="text-sm text-green-800 font-bold font-technical drop-shadow-sm" style={{textShadow: '1px 1px 2px rgba(255,255,255,0.8)'}}>
                   Live rates updated {lastUpdated ? 'now' : 'hourly'}
                 </span>
-              </div>
+              </div> */}
             </div>
             
             {/* CTA Buttons with Premium Effects */}
@@ -97,12 +97,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <span className="relative z-10">{hero.buttons.primary}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
               </button>
-              <button 
+              {/* <button 
                 className="glass-morphism-dark border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:text-purple-600 transition-all duration-300 hover-lift font-technical" 
                 type="button"
               >
                 {hero.buttons.secondary}
-              </button>
+              </button> */}
             </div>
           </div>
           

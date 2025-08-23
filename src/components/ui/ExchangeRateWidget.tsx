@@ -24,8 +24,8 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
       setInputError('Amount cannot be negative');
       return;
     }
-    if (value > 50000) {
-      setInputError('Amount cannot exceed $50,000');
+    if (value > 100000) {
+      setInputError('Amount cannot exceed $10,000');
       return;
     }
     
@@ -33,20 +33,16 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
     setUsdAmount(value);
   };
 
-  const handleQuickAmount = (amount: number): void => {
-    setInputError('');
-    setUsdAmount(amount);
-  };
 
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-2xl max-w-md w-full glass-morphism hover-lift relative overflow-hidden group">
+    <div className="bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-full glass-morphism hover-lift relative overflow-hidden group">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 atomx-gradient-trust opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
       <div className="relative z-10">
-        <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center font-technical">{calculator.title}</h3>
+        <h3 className="text-xl font-bold text-gray-800 mb-4 text-center font-technical">{calculator.title}</h3>
       
         {/* Quick Amount Buttons with Enhanced Effects */}
-        <div className="flex gap-2 mb-6">
+        {/* <div className="flex gap-2 mb-6">
           {[500, 1000, 2000, 5000].map((amount) => (
             <button
               key={amount}
@@ -61,7 +57,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
               ${amount.toLocaleString()}
             </button>
           ))}
-        </div>
+        </div> */}
       
       <div className="space-y-4">
         <div>
@@ -72,7 +68,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
               type="number"
               value={usdAmount || ''}
               onChange={handleAmountChange}
-              className={`w-full pl-8 pr-16 py-3 border rounded-lg focus:ring-2 focus:border-transparent text-lg font-semibold text-gray-800 ${
+              className={`w-full pl-8 pr-16 py-2.5 border rounded-lg focus:ring-2 focus:border-transparent text-base font-semibold text-gray-800 ${
                 inputError ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-purple-500'
               }`}
               placeholder="1000"
@@ -97,7 +93,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
               type="text"
               value={inrAmount.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
               readOnly
-              className="w-full pl-8 pr-16 py-3 border border-gray-300 rounded-lg bg-green-50 text-lg font-semibold text-green-600"
+              className="w-full pl-8 pr-16 py-2.5 border border-gray-300 rounded-lg bg-green-50 text-base font-semibold text-green-600"
             />
             {isLoading && (
               <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center rounded-lg">
@@ -109,12 +105,12 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
         </div>
       </div>
       
-      <div className="mt-6 space-y-3 text-sm">
-        <div className="flex justify-between items-center">
-          <span className="text-gray-600">{calculator.labels.liveGoogleRate}</span>
+      <div className="mt-4 space-y-2 text-sm">
+        <div className="flex justify-between items-center bg-gradient-to-r from-green-50 to-blue-50 p-3 rounded-lg border border-green-200">
+          <span className="text-green-700 font-semibold">{calculator.labels.liveGoogleRate}</span>
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-gray-800">1 USD = ₹{exchangeRate.toFixed(2)}</span>
-            {isLoading && <RefreshCw className="w-4 h-4 animate-spin text-blue-500" />}
+            <span className="font-bold text-green-800 text-base">1 USD = ₹{exchangeRate.toFixed(2)}</span>
+            {isLoading && <RefreshCw className="w-4 h-4 animate-spin text-green-500" />}
           </div>
         </div>
         <div className="flex justify-between">
@@ -140,7 +136,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
       </div>
       
         <button 
-          className={`w-full py-4 rounded-lg text-lg font-semibold mt-6 transition-all font-technical btn-gooey relative overflow-hidden group ${
+          className={`w-full py-3 rounded-lg text-base font-semibold mt-4 transition-all font-technical btn-gooey relative overflow-hidden group ${
             inputError || usdAmount <= 0
               ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
               : 'atomx-gradient-accent text-white hover-lift'

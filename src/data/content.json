@@ -15,22 +15,25 @@
     }
   },
   "hero": {
-    "title": "Global Remittances in Less Than 15 Minutes",
-    "subtitle": "No preloaded inventory. No correspondent banks. Just transparent, real-time transfers powered by blockchain rails.",
+    "title": "Global Remittances in 15 Minutes",
+    "subtitle": "No preloaded rates. No banking middleman. No delay. Transparent blockchain transfers.",
     "trustBadges": [
-      { "text": "100% Compliant", "icon": "check" }
+      { "text": "100% Compliant", "icon": "check" },
+      { "text": "No Hidden Fees", "icon": "check" },      
+      { "text": "Encrypted Security", "icon": "check" }
+      
     ],
     "buttons": {
-      "primary": "Send Money Now",
-      "secondary": "Get Started"
+      "primary": "Get Started",
+      "secondary": "Send Money Now"
     }
   },
   "calculator": {
-    "title": "Calculate Your Transfer",
+    "title": "Live Rates, Seamless Transfers",
     "labels": {
       "youSend": "You Send",
       "theyReceive": "They Receive",
-      "liveGoogleRate": "Live Google Rate",
+      "liveGoogleRate": "Live Exchange Rate",
       "flatFee": "Flat Fee",
       "transferTime": "Transfer Time",
       "totalCost": "Total Cost"
