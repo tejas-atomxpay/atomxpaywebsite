@@ -50,6 +50,14 @@ function ChartContainer({
   );
 }
 
+// CSS color validation function to prevent injection
+const isValidCSSColor = (color) => {
+  if (!color || typeof color !== 'string') return false;
+  // Allow hex colors, rgb/rgba, hsl/hsla, and named colors
+  const validColorRegex = /^(#[0-9A-Fa-f]{3,8}|rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)|rgba\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*,\s*[01]?\.?\d*\s*\)|hsl\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*\)|hsla\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%\s*,\s*[01]?\.?\d*\s*\)|[a-zA-Z]+)$/;
+  return validColorRegex.test(color.trim());
+};
+
 const ChartStyle = ({
   id,
   config
@@ -60,24 +68,24 @@ const ChartStyle = ({
     return null
   }
 
+  // Create CSS custom properties safely using React's style attribute
+  const cssVariables = {};
+  
+  colorConfig.forEach(([key, itemConfig]) => {
+    Object.entries(THEMES).forEach(([theme]) => {
+      const color = itemConfig.theme?.[theme] || itemConfig.color;
+      if (color && isValidCSSColor(color)) {
+        cssVariables[`--color-${key}`] = color;
+      }
+    });
+  });
+
   return (
-    <style
-      dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-.map(([key, itemConfig]) => {
-const color =
-  itemConfig.theme?.[theme] ||
-  itemConfig.color
-return color ? `  --color-${key}: ${color};` : null
-})
-.join("\n")}
-}
-`)
-          .join("\n"),
-      }} />
+    <div 
+      data-chart-style={id}
+      style={cssVariables}
+      className="[&_*]:inherit-chart-colors"
+    />
   );
 }
 

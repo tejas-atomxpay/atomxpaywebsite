@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.dollarpe.com)",
+      "WebFetch(domain:remit2any.com)",
+      "WebFetch(domain:unplex.app)",
+      "WebFetch(domain:scopex.money)",
+      "WebFetch(domain:www.aspora.com)",
+      "WebFetch(domain:www.remitly.com)",
+      "WebFetch(domain:www.westernunion.com)",
+      "WebFetch(domain:lenis.darkroom.engineering)",
+      "WebFetch(domain:robinhood.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:composio.dev)",
+      "WebFetch(domain:motion.dev)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

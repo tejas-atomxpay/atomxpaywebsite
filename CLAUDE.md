@@ -69,3 +69,11 @@ src/
 - TypeScript with strict mode enabled
 - ESLint for code quality
 - Production builds to `dist/` directory
+
+### Security Measures
+- Content Security Policy (CSP) headers configured in `index.html`
+- Security headers: X-Frame-Options, X-Content-Type-Options, X-XSS-Protection
+- API rate limiting and resilience in `useCurrencyAPI.ts`
+- CSS injection prevention in chart components
+- Dependency security: `.nvmrc`, `.npmrc`, and audit scripts in `package.json`
+- See `SECURITY.md` for comprehensive security documentation
