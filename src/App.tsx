@@ -4,7 +4,6 @@ import Lenis from 'lenis';
 import './App.css';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
-import AboutSection from './components/sections/AboutSection';
 import ComparisonSection from './components/sections/ComparisonSection';
 import HowItWorksSection from './components/sections/HowItWorksSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
@@ -122,7 +121,6 @@ const App: React.FC = () => {
       
       <HeroSection />
       
-      <AboutSection />
       <ComparisonSection />
       <HowItWorksSection />
       <FAQSection />

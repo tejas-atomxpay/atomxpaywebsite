@@ -2,7 +2,6 @@
   "navigation": {
     "logo": "AtomX Pay",
     "links": [
-      { "id": "about", "label": "About Us" },
       { "id": "comparison", "label": "Compare AtomX Pay" },
       { "id": "business-model", "label": "How It Works" },
       { "id": "faq", "label": "FAQs" },
@@ -413,7 +412,6 @@
       {
         "title": "Quick Links",
         "links": [
-          { "label": "About Us", "href": "#" },
           { "label": "Send Money", "href": "#" },
           { "label": "Privacy Policy", "href": "#" },
           { "label": "Terms of Service", "href": "#" },
