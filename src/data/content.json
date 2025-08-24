@@ -218,32 +218,35 @@
     }
   },
   "howItWorks": {
-    "title": "How It Works",
-    "subtitle": "Start sending money to India in 3 simple steps",
+    "title": "Experience Blockchain Rails",
+    "subtitle": "Watch your money travel the modern way — zero middlemen, zero delays",
     "steps": [
       {
         "number": 1,
-        "title": "Sign Up",
-        "description": "Create your account in minutes with just your email and phone number. Quick and secure registration process.",
-        "icon": "users"
+        "title": "Connect Your Wallet",
+        "description": "Link your bank account or digital wallet. Our blockchain rails connect directly to global financial networks, bypassing traditional correspondent banking.",
+        "icon": "link",
+        "highlight": "No Banking Delays"
       },
       {
         "number": 2,
-        "title": "Verify KYC",
-        "description": "Complete your identity verification with our secure KYC process. Upload documents and get verified instantly.",
-        "icon": "shield"
+        "title": "Live Rate Lock-In",
+        "description": "See real-time exchange rates with zero markup. Lock in the exact rate you see — no hidden spreads or pre-loaded currency pools.",
+        "icon": "trending-up",
+        "highlight": "True Market Rates"
       },
       {
         "number": 3,
-        "title": "Start Sending Money",
-        "description": "Send money to India instantly. Your recipient receives funds in their bank account within 15 minutes.",
-        "icon": "send"
+        "title": "Blockchain Settlement",
+        "description": "Your transfer moves via blockchain rails in 15 minutes. Track every step with full transparency — from initiation to final settlement.",
+        "icon": "zap",
+        "highlight": "15-Min Settlement"
       }
     ],
     "compliance": {
-      "title": "100% Compliant and Safe",
-      "description": "We operate under requisite licenses, including FIU registration in India and MSB registration in the USA.",
-      "button": "Start Your Transfer"
+      "title": "Built on Blockchain. Backed by Compliance.",
+      "description": "MSB-licensed in the USA, FIU-registered in India. Blockchain rails with traditional regulatory protection.",
+      "button": "Start Blockchain Transfer"
     }
   },
   "features": {
