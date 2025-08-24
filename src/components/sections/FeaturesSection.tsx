@@ -19,7 +19,9 @@ const FeaturesSection: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="features" className="py-8 bg-white">
+    <section id="features" className={`bg-white ${
+      isMobile ? 'py-12 pt-20' : 'py-8'
+    }`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <h2 className="text-2xl lg:text-3xl font-bold mb-2 text-black">{features.title}</h2>

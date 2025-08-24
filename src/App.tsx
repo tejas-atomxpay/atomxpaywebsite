@@ -91,12 +91,11 @@ const App: React.FC = () => {
   const scrollToSection = (sectionId: string): void => {
     const targetElement = document.getElementById(sectionId);
     
-    if (targetElement && window.lenis) {
-      // Use CSS scroll-margin-top for proper positioning - no offset needed
-      window.lenis.scrollTo(targetElement, { 
-        offset: -60, // Let CSS scroll-margin-top handle the positioning
-        duration: 1.2,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+    if (targetElement) {
+      // Use native scrollIntoView for better CSS scroll-margin-top support
+      targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
       });
     }
   };
