@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, Clock, Shield, TrendingUp, DollarSign, CheckCircle, Send } from 'lucide-react';
 import FeatureCard from '../ui/FeatureCard';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const iconMap = {
@@ -15,6 +16,7 @@ const iconMap = {
 
 const FeaturesSection: React.FC = () => {
   const { features } = content;
+  const isMobile = useIsMobile();
 
   return (
     <section id="features" className="py-8 bg-white">

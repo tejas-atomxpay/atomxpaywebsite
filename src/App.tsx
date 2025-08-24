@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import Lenis from 'lenis';
 import './App.css';
-import { useIsMobile } from './hooks/use-mobile';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
 import ComparisonSection from './components/sections/ComparisonSection';
@@ -15,7 +14,6 @@ import Footer from './components/layout/Footer';
 import { useCurrencyAPI } from './hooks/useCurrencyAPI';
 
 const App: React.FC = () => {
-  const isMobile = useIsMobile();
   const [usdAmount, setUsdAmount] = useState<number>(1000);
   const [activeSection, setActiveSection] = useState<string>('');
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -23,13 +21,19 @@ const App: React.FC = () => {
   const { exchangeRate, isLoading, lastUpdated } = useCurrencyAPI();
 
   useEffect(() => {
+    // Prevent auto-scroll on page load
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1,
-      touchMultiplier: 2
+      touchMultiplier: 2,
+      autoRaf: true
     });
 
     // Make lenis instance globally available
@@ -85,20 +89,12 @@ const App: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string): void => {
-    let targetElement = document.getElementById(sectionId);
-    
-    // For comparison section on mobile, use a specific mobile target
-    if (sectionId === 'comparison' && isMobile) {
-      const mobileTarget = document.getElementById('comparison-mobile-target');
-      if (mobileTarget) {
-        targetElement = mobileTarget;
-      }
-    }
+    const targetElement = document.getElementById(sectionId);
     
     if (targetElement && window.lenis) {
-      const offset = isMobile ? -80 : -80; // Use standard offset now that we have precise targets
+      // Use CSS scroll-margin-top for proper positioning - no offset needed
       window.lenis.scrollTo(targetElement, { 
-        offset,
+        offset: -60, // Let CSS scroll-margin-top handle the positioning
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
       });

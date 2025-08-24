@@ -264,3 +264,26 @@
 .shader-container:hover .shader-overlay {
   opacity: 0.8;
 }
+
+/* Mobile Scroll Margin for Navigation */
+@media (max-width: 767px) {
+  #comparison,
+  #features, 
+  #business-model,
+  #faq,
+  #testimonials,
+  #blog {
+    scroll-margin-top: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  #comparison,
+  #features,
+  #business-model, 
+  #faq,
+  #testimonials,
+  #blog {
+    scroll-margin-top: 80px;
+  }
+}

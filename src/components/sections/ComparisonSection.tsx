@@ -77,10 +77,6 @@ const ComparisonSection: React.FC = () => {
     
     return (
       <div className="mb-6 last:mb-0">
-        {/* Mobile scroll target for first table (Traditional Banking) */}
-        {category === 'traditional' && isMobile && (
-          <div id="comparison-mobile-target" className="absolute -mt-24"></div>
-        )}
         {/* Table Header - Compact */}
         <div className="text-center mb-3">
           <h3 className={`text-lg lg:text-xl font-bold ${colorClass}`}>
