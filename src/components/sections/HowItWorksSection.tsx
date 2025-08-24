@@ -15,7 +15,7 @@ const HowItWorksSection: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="business-model" className={`bg-gray-50 ${
+    <section id="business-model" className={`bg-gray-200 ${
       isMobile ? 'py-12 pt-20' : 'py-8'
     }`}>
       <div className="container mx-auto px-4">
