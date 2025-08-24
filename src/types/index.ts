@@ -70,3 +70,9 @@ export interface FooterSection {
   links: FooterLink[];
 }
 
+export interface ComparisonSectionProps {
+  currentPair: CurrencyPair;
+  fromAmount: number;
+  exchangeRate: number;
+}
+

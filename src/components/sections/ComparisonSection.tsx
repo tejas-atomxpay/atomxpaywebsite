@@ -1,10 +1,77 @@
 import React from 'react';
 import { useIsMobile } from '../../hooks/use-mobile';
+import { useCurrency } from '../../contexts/CurrencyContext';
 import content from '../../data/content.json';
 
 const ComparisonSection: React.FC = () => {
-  const { comparison } = content;
+  const { comparison, calculator } = content;
   const isMobile = useIsMobile();
+  const { currentPair, fromAmount, exchangeRate } = useCurrency();
+  
+  // Calculate dynamic values
+  const toAmount = fromAmount * exchangeRate;
+  const atomxFee = currentPair.from === 'USD' ? calculator.values.flatFeeUSD : 
+                   currentPair.from === 'EUR' ? calculator.values.flatFeeEUR : 
+                   calculator.values.flatFeeINR;
+  const atomxTotal = fromAmount + atomxFee;
+  
+  // Generate dynamic provider data
+  const generateDynamicProviders = () => {
+    const baseAmount = fromAmount;
+    const liveRate = exchangeRate;
+    
+    // Calculate competitor rates with markups
+    const competitors = [
+      // AtomX Pay (our service)
+      {
+        category: 'blockchain',
+        name: 'AtomX Pay',
+        exchangeRate: `${currentPair.toSymbol}${liveRate.toFixed(4)} (Live Exchange Rate)`,
+        transferFee: `${currentPair.fromSymbol}${atomxFee.toFixed(2)}`,
+        recipientGets: `${currentPair.toSymbol}${toAmount.toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 2 })}`,
+        time: calculator.values.transferTime,
+        highlight: true
+      },
+      // Traditional banks with higher markups
+      {
+        category: 'traditional',
+        name: 'Wells Fargo',
+        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.95).toFixed(4)} (5% markup)`,
+        transferFee: currentPair.from === 'USD' ? '$45' : currentPair.from === 'EUR' ? '€40' : '₹3,500',
+        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 45 : currentPair.from === 'EUR' ? 40 : 3500)) * liveRate * 0.95).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
+        time: '3-5 days'
+      },
+      {
+        category: 'traditional',
+        name: 'ICICI Bank',
+        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.97).toFixed(4)} (3% markup)`,
+        transferFee: currentPair.from === 'USD' ? '$30' : currentPair.from === 'EUR' ? '€25' : '₹2,500',
+        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 30 : currentPair.from === 'EUR' ? 25 : 2500)) * liveRate * 0.97).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
+        time: '2-3 days'
+      },
+      // MSB providers
+      {
+        category: 'msb',
+        name: 'WISE',
+        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.99).toFixed(4)} (1% markup)`,
+        transferFee: currentPair.from === 'USD' ? '$8' : currentPair.from === 'EUR' ? '€7' : '₹650',
+        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 8 : currentPair.from === 'EUR' ? 7 : 650)) * liveRate * 0.99).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
+        time: '1-2 days'
+      },
+      {
+        category: 'msb',
+        name: 'Remitly',
+        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.985).toFixed(4)} (1.5% markup)`,
+        transferFee: currentPair.from === 'USD' ? '$4.99' : currentPair.from === 'EUR' ? '€4.50' : '₹400',
+        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 4.99 : currentPair.from === 'EUR' ? 4.50 : 400)) * liveRate * 0.985).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
+        time: '1-3 days'
+      }
+    ];
+    
+    return competitors;
+  };
+  
+  const dynamicProviders = generateDynamicProviders();
 
   const renderProviderCard = (provider: any, index: number) => {
     return (
@@ -73,7 +140,7 @@ const ComparisonSection: React.FC = () => {
   };
 
   const renderTable = (category: string, title: string, colorClass: string) => {
-    const providers = comparison.providers.filter(provider => provider.category === category);
+    const providers = dynamicProviders.filter(provider => provider.category === category);
     
     return (
       <div className="mb-6 last:mb-0">
@@ -183,7 +250,7 @@ const ComparisonSection: React.FC = () => {
           <h3 className={`font-semibold text-gray-800 ${
             isMobile ? 'text-base mb-3' : 'text-lg lg:text-xl mb-4'
           }`}>
-            {comparison.subtitle}
+            Compare what {currentPair.fromSymbol}{fromAmount.toLocaleString()} gets you across providers — AtomX Pay gives you the most, in minutes
           </h3>
         </div>
         
@@ -202,7 +269,7 @@ const ComparisonSection: React.FC = () => {
         {/* Footer Note - Compact */}
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-600">
-            * All rates are indicative and subject to change. AtomX Pay offers live market rates with no hidden markups.
+            * Rates updated live from {currentPair.from} to {currentPair.to}. AtomX Pay offers real market rates with no hidden markups.
           </p>
         </div>
       </div>

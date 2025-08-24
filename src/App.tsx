@@ -11,14 +11,12 @@ import TestimonialsSection from './components/sections/TestimonialsSection';
 import FAQSection from './components/sections/FAQSection';
 import BlogSection from './components/sections/BlogSection';
 import Footer from './components/layout/Footer';
-import { useCurrencyAPI } from './hooks/useCurrencyAPI';
+import { CurrencyProvider } from './contexts/CurrencyContext';
 
 const App: React.FC = () => {
-  const [usdAmount, setUsdAmount] = useState<number>(1000);
   const [activeSection, setActiveSection] = useState<string>('');
   const [scrollProgress, setScrollProgress] = useState<number>(0);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
-  const { exchangeRate, isLoading, lastUpdated } = useCurrencyAPI();
 
   useEffect(() => {
     // Prevent auto-scroll on page load
@@ -109,7 +107,8 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
+    <CurrencyProvider>
+      <div className="App">
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 bg-gray-200 z-50">
         <div 
@@ -120,13 +119,7 @@ const App: React.FC = () => {
       
       <Header scrollToSection={scrollToSection} scrollToTop={scrollToTop} activeSection={activeSection} />
       
-      <HeroSection 
-        usdAmount={usdAmount}
-        setUsdAmount={setUsdAmount}
-        exchangeRate={exchangeRate}
-        isLoading={isLoading}
-        lastUpdated={lastUpdated}
-      />
+      <HeroSection />
       
       <ComparisonSection />
       <FeaturesSection />
@@ -147,7 +140,8 @@ const App: React.FC = () => {
       >
         <ArrowUp className="w-6 h-6" />
       </button>
-    </div>
+      </div>
+    </CurrencyProvider>
   );
 };
 

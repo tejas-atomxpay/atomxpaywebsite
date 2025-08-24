@@ -2,21 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Check, Users, Zap } from 'lucide-react';
 // import { MeshGradient } from '@paper-design/shaders-react';
 import ExchangeRateWidget from '../ui/ExchangeRateWidget';
-import { CurrencyPair } from '../../types';
 import { useIsMobile } from '../../hooks/use-mobile';
 import { useCurrencyAPI } from '../../hooks/useCurrencyAPI';
+import { useCurrency } from '../../contexts/CurrencyContext';
 import content from '../../data/content.json';
 
 interface HeroSectionProps {}
 
 const HeroSection: React.FC<HeroSectionProps> = () => {
-  const { hero, calculator } = content;
+  const { hero } = content;
   const isMobile = useIsMobile();
   const [liveUsers, setLiveUsers] = useState<number>(1247);
   const [transfersToday, setTransfersToday] = useState<number>(89);
   
-  // Currency state management
-  const [currentPair, setCurrentPair] = useState<CurrencyPair>(calculator.supportedPairs[0]);
+  // Use currency context
+  const { currentPair, setCurrentPair, fromAmount, setFromAmount, exchangeRate: contextExchangeRate, setExchangeRate } = useCurrency();
+  
+  // Get exchange rate for current pair
+  const { exchangeRate: apiExchangeRate, isLoading, lastUpdated } = useCurrencyAPI(currentPair.from, currentPair.to);
+  
+  // Update context exchange rate when API rate changes
+  useEffect(() => {
+    if (apiExchangeRate) {
+      setExchangeRate(apiExchangeRate);
+    }
+  }, [apiExchangeRate, setExchangeRate]);
+
   // Get default amount based on currency
   const getDefaultAmount = (currency: string) => {
     switch (currency) {
@@ -26,18 +37,11 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
       default: return 1000;
     }
   };
-  
-  const [fromAmount, setFromAmount] = useState<number>(
-    getDefaultAmount(calculator.supportedPairs[0].from)
-  );
-  
-  // Get exchange rate for current pair
-  const { exchangeRate, isLoading, lastUpdated } = useCurrencyAPI(currentPair.from, currentPair.to);
 
   // Update default amount when currency pair changes
   useEffect(() => {
     setFromAmount(getDefaultAmount(currentPair.from));
-  }, [currentPair]);
+  }, [currentPair, setFromAmount]);
 
   // Simulate live counters
   useEffect(() => {
@@ -148,7 +152,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             <ExchangeRateWidget 
               fromAmount={fromAmount} 
               setFromAmount={setFromAmount} 
-              exchangeRate={exchangeRate}
+              exchangeRate={contextExchangeRate}
               isLoading={isLoading}
               lastUpdated={lastUpdated}
               currentPair={currentPair}
