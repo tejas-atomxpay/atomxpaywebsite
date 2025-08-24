@@ -1,24 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Check, Users, Zap } from 'lucide-react';
-import { MeshGradient } from '@paper-design/shaders-react';
+// import { MeshGradient } from '@paper-design/shaders-react';
 import ExchangeRateWidget from '../ui/ExchangeRateWidget';
-import { ExchangeRateWidgetProps } from '../../types';
+import { CurrencyPair } from '../../types';
 import { useIsMobile } from '../../hooks/use-mobile';
+import { useCurrencyAPI } from '../../hooks/useCurrencyAPI';
 import content from '../../data/content.json';
 
-interface HeroSectionProps extends ExchangeRateWidgetProps {}
+interface HeroSectionProps {}
 
-const HeroSection: React.FC<HeroSectionProps> = ({ 
-  usdAmount, 
-  setUsdAmount, 
-  exchangeRate, 
-  isLoading, 
-  lastUpdated 
-}) => {
-  const { hero } = content;
+const HeroSection: React.FC<HeroSectionProps> = () => {
+  const { hero, calculator } = content;
   const isMobile = useIsMobile();
   const [liveUsers, setLiveUsers] = useState<number>(1247);
   const [transfersToday, setTransfersToday] = useState<number>(89);
+  
+  // Currency state management
+  const [currentPair, setCurrentPair] = useState<CurrencyPair>(calculator.supportedPairs[0]);
+  // Get default amount based on currency
+  const getDefaultAmount = (currency: string) => {
+    switch (currency) {
+      case 'INR': return 100000;
+      case 'USD': return 1000;
+      case 'EUR': return 1000;
+      default: return 1000;
+    }
+  };
+  
+  const [fromAmount, setFromAmount] = useState<number>(
+    getDefaultAmount(calculator.supportedPairs[0].from)
+  );
+  
+  // Get exchange rate for current pair
+  const { exchangeRate, isLoading, lastUpdated } = useCurrencyAPI(currentPair.from, currentPair.to);
+
+  // Update default amount when currency pair changes
+  useEffect(() => {
+    setFromAmount(getDefaultAmount(currentPair.from));
+  }, [currentPair]);
 
   // Simulate live counters
   useEffect(() => {
@@ -127,11 +146,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Exchange Rate Widget */}
           <div className={isMobile ? "flex justify-center mt-8" : "flex justify-center lg:justify-end"}>
             <ExchangeRateWidget 
-              usdAmount={usdAmount} 
-              setUsdAmount={setUsdAmount} 
+              fromAmount={fromAmount} 
+              setFromAmount={setFromAmount} 
               exchangeRate={exchangeRate}
               isLoading={isLoading}
               lastUpdated={lastUpdated}
+              currentPair={currentPair}
+              onPairChange={setCurrentPair}
             />
           </div>
         </div>

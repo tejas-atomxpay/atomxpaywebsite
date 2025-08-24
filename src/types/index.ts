@@ -1,11 +1,21 @@
 // Type definitions for AtomX Pay website
 
+export interface CurrencyPair {
+  from: string;
+  to: string;
+  fromSymbol: string;
+  toSymbol: string;
+  apiPair: string;
+}
+
 export interface ExchangeRateWidgetProps {
-  usdAmount: number;
-  setUsdAmount: (amount: number) => void;
+  fromAmount: number;
+  setFromAmount: (amount: number) => void;
   exchangeRate: number;
   isLoading?: boolean;
   lastUpdated?: string | null;
+  currentPair?: CurrencyPair;
+  onPairChange?: (pair: CurrencyPair) => void;
 }
 
 export interface FAQItemProps {

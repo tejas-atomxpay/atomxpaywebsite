@@ -39,11 +39,66 @@
       "totalCost": "Total Cost"
     },
     "currencies": {
-      "usd": "USD",
-      "inr": "INR"
+      "from": {
+        "code": "USD",
+        "symbol": "$",
+        "name": "US Dollar"
+      },
+      "to": {
+        "code": "INR", 
+        "symbol": "₹",
+        "name": "Indian Rupee"
+      }
     },
+    "supportedPairs": [
+      {
+        "from": "INR", 
+        "to": "USD",
+        "fromSymbol": "₹",
+        "toSymbol": "$",
+        "apiPair": "INR_USD"
+      },
+      {
+        "from": "USD",
+        "to": "INR",
+        "fromSymbol": "$",
+        "toSymbol": "₹",
+        "apiPair": "USD_INR"
+      },
+      {
+        "from": "EUR",
+        "to": "INR",
+        "fromSymbol": "€",
+        "toSymbol": "₹",
+        "apiPair": "EUR_INR"
+      },
+      {
+        "from": "INR",
+        "to": "EUR", 
+        "fromSymbol": "₹",
+        "toSymbol": "€",
+        "apiPair": "INR_EUR"
+      },
+      {
+        "from": "USD",
+        "to": "EUR",
+        "fromSymbol": "$",
+        "toSymbol": "€", 
+        "apiPair": "USD_EUR"
+      },
+      {
+        "from": "EUR",
+        "to": "USD",
+        "fromSymbol": "€",
+        "toSymbol": "$",
+        "apiPair": "EUR_USD"
+      }
+    ],
     "values": {
       "flatFee": 3,
+      "flatFeeUSD": 3,
+      "flatFeeINR": 250,
+      "flatFeeEUR": 2.5,
       "transferTime": "~15 minutes",
       "zeroFeePromo": "Zero fee for the first transfer"
     },
