@@ -1,10 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { Search } from 'lucide-react';
 import FAQItem from '../ui/FAQItem';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const FAQSection: React.FC = () => {
   const { faq } = content;
+  const isMobile = useIsMobile();
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const filteredQuestions = useMemo(() => {
@@ -17,11 +19,19 @@ const FAQSection: React.FC = () => {
   }, [searchQuery, faq.questions]);
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className={`bg-white ${
+      isMobile ? 'py-12' : 'py-20'
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-black">{faq.title}</h2>
-          <p className="text-xl text-gray-600 mb-8">
+        <div className={`text-center ${
+          isMobile ? 'mb-8' : 'mb-16'
+        }`}>
+          <h2 className={`font-bold text-black ${
+            isMobile ? 'text-2xl mb-3' : 'text-4xl mb-4'
+          }`}>{faq.title}</h2>
+          <p className={`text-gray-600 ${
+            isMobile ? 'text-lg mb-6' : 'text-xl mb-8'
+          }`}>
             {faq.subtitle}
           </p>
           

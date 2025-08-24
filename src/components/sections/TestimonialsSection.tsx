@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import TestimonialCard from '../ui/TestimonialCard';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const TestimonialsSection: React.FC = () => {
   const { testimonials } = content;
+  const isMobile = useIsMobile();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
 
@@ -29,11 +31,19 @@ const TestimonialsSection: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-50">
+    <section id="testimonials" className={`bg-gray-50 ${
+      isMobile ? 'py-12' : 'py-20'
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-black">{testimonials.title}</h2>
-          <p className="text-xl text-gray-600">
+        <div className={`text-center ${
+          isMobile ? 'mb-8' : 'mb-16'
+        }`}>
+          <h2 className={`font-bold text-black ${
+            isMobile ? 'text-2xl mb-3' : 'text-4xl mb-4'
+          }`}>{testimonials.title}</h2>
+          <p className={`text-gray-600 ${
+            isMobile ? 'text-lg' : 'text-xl'
+          }`}>
             {testimonials.subtitle}
           </p>
         </div>

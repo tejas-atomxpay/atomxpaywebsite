@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import Lenis from 'lenis';
 import './App.css';
+import { useIsMobile } from './hooks/use-mobile';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
 import ComparisonSection from './components/sections/ComparisonSection';
@@ -14,6 +15,7 @@ import Footer from './components/layout/Footer';
 import { useCurrencyAPI } from './hooks/useCurrencyAPI';
 
 const App: React.FC = () => {
+  const isMobile = useIsMobile();
   const [usdAmount, setUsdAmount] = useState<number>(1000);
   const [activeSection, setActiveSection] = useState<string>('');
   const [scrollProgress, setScrollProgress] = useState<number>(0);
@@ -52,6 +54,13 @@ const App: React.FC = () => {
 
       // Active section detection
       const sections = ['comparison', 'features', 'business-model', 'faq', 'testimonials', 'blog'];
+      
+      // Check if we're at the top of the page (in hero section)
+      if (scrollTop < 300) {
+        setActiveSection('');
+        return;
+      }
+      
       const current = sections.find(sectionId => {
         const element = document.getElementById(sectionId);
         if (element) {
@@ -60,7 +69,9 @@ const App: React.FC = () => {
         }
         return false;
       });
-      if (current) setActiveSection(current);
+      
+      // Set active section or clear it if none is active
+      setActiveSection(current || '');
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -74,10 +85,20 @@ const App: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string): void => {
-    const element = document.getElementById(sectionId);
-    if (element && window.lenis) {
-      window.lenis.scrollTo(element, { 
-        offset: -80, // Offset for the fixed header
+    let targetElement = document.getElementById(sectionId);
+    
+    // For comparison section on mobile, use a specific mobile target
+    if (sectionId === 'comparison' && isMobile) {
+      const mobileTarget = document.getElementById('comparison-mobile-target');
+      if (mobileTarget) {
+        targetElement = mobileTarget;
+      }
+    }
+    
+    if (targetElement && window.lenis) {
+      const offset = isMobile ? -80 : -80; // Use standard offset now that we have precise targets
+      window.lenis.scrollTo(targetElement, { 
+        offset,
         duration: 1.2,
         easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
       });
@@ -102,7 +123,7 @@ const App: React.FC = () => {
         />
       </div>
       
-      <Header scrollToSection={scrollToSection} activeSection={activeSection} />
+      <Header scrollToSection={scrollToSection} scrollToTop={scrollToTop} activeSection={activeSection} />
       
       <HeroSection 
         usdAmount={usdAmount}

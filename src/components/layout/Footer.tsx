@@ -1,6 +1,7 @@
 import React from 'react';
 import { Twitter, Linkedin, Facebook } from 'lucide-react';
 import logoImage from '../../assets/logo.png';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const socialIcons = {
@@ -11,11 +12,16 @@ const socialIcons = {
 
 const Footer: React.FC = () => {
   const { footer } = content;
+  const isMobile = useIsMobile();
 
   return (
-    <footer className="bg-gray-900 text-white py-16">
+    <footer className={`bg-gray-900 text-white ${
+      isMobile ? 'py-12' : 'py-16'
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+        <div className={`grid gap-8 ${
+          isMobile ? 'grid-cols-1 mb-8' : 'md:grid-cols-2 lg:grid-cols-6 mb-12'
+        }`}>
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center mb-4">
@@ -60,7 +66,9 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Contact Information */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12 pt-8 border-t border-gray-800">
+        <div className={`grid gap-8 pt-8 border-t border-gray-800 ${
+          isMobile ? 'grid-cols-1 mb-8' : 'md:grid-cols-2 mb-12'
+        }`}>
           <div>
             <h3 className="font-semibold mb-4">{footer.contact.usa.title}</h3>
             <div className="text-gray-400 space-y-2">

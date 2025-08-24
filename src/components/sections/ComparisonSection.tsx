@@ -1,8 +1,10 @@
 import React from 'react';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const ComparisonSection: React.FC = () => {
   const { comparison } = content;
+  const isMobile = useIsMobile();
 
   const renderProviderCard = (provider: any, index: number) => {
     return (
@@ -75,6 +77,10 @@ const ComparisonSection: React.FC = () => {
     
     return (
       <div className="mb-6 last:mb-0">
+        {/* Mobile scroll target for first table (Traditional Banking) */}
+        {category === 'traditional' && isMobile && (
+          <div id="comparison-mobile-target" className="absolute -mt-24"></div>
+        )}
         {/* Table Header - Compact */}
         <div className="text-center mb-3">
           <h3 className={`text-lg lg:text-xl font-bold ${colorClass}`}>
@@ -167,14 +173,20 @@ const ComparisonSection: React.FC = () => {
   };
 
   return (
-    <section id="comparison" className="py-8 bg-gray-200">
+    <section id="comparison" className={`bg-gray-200 ${
+      isMobile ? 'py-12 pt-20' : 'py-8'
+    }`}>
       <div className="container mx-auto px-4">
         {/* Main Header - Compact */}
-        <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-2 text-black">
+        <div className={`text-center ${isMobile ? 'mb-6' : 'mb-8'}`}>
+          <h2 className={`font-bold text-black ${
+            isMobile ? 'text-xl mb-2' : 'text-2xl lg:text-3xl mb-2'
+          }`}>
             {comparison.title}
           </h2>
-          <h3 className="text-lg lg:text-xl font-semibold mb-4 text-gray-800">
+          <h3 className={`font-semibold text-gray-800 ${
+            isMobile ? 'text-base mb-3' : 'text-lg lg:text-xl mb-4'
+          }`}>
             {comparison.subtitle}
           </h3>
         </div>

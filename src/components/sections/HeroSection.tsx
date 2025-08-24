@@ -3,6 +3,7 @@ import { Check, Users, Zap } from 'lucide-react';
 import { MeshGradient } from '@paper-design/shaders-react';
 import ExchangeRateWidget from '../ui/ExchangeRateWidget';
 import { ExchangeRateWidgetProps } from '../../types';
+import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 interface HeroSectionProps extends ExchangeRateWidgetProps {}
@@ -15,6 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   lastUpdated 
 }) => {
   const { hero } = content;
+  const isMobile = useIsMobile();
   const [liveUsers, setLiveUsers] = useState<number>(1247);
   const [transfersToday, setTransfersToday] = useState<number>(89);
 
@@ -31,7 +33,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   }, []);
 
   return (
-    <section className="relative bg-white text-black py-12 h-[75vh] flex items-center shader-container overflow-hidden">
+    <section className={`relative bg-white text-black shader-container overflow-hidden ${
+      isMobile 
+        ? 'py-8 min-h-screen flex flex-col justify-center' 
+        : 'py-12 h-[75vh] flex items-center'
+    }`}>
       {/* MeshGradient Background */}
       {/* <div className="absolute inset-0 shader-overlay">
         <MeshGradient
@@ -42,17 +48,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div> */}
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-black drop-shadow-lg" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,255,255,0.8)'}}>
+        <div className={`grid gap-12 items-center ${
+          isMobile ? 'grid-cols-1 gap-8' : 'lg:grid-cols-2'
+        }`}>
+          <div className={isMobile ? "text-center" : "text-center lg:text-left"}>
+            <h1 className={`font-bold leading-tight text-black drop-shadow-lg ${
+              isMobile ? 'text-3xl mb-4' : 'text-4xl md:text-5xl lg:text-6xl mb-6'
+            }`} style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,255,255,0.8)'}}>
               {hero.title}
             </h1>
-            <p className="text-xl mb-8 text-gray-800 max-w-2xl font-semibold drop-shadow-md" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0 0 6px rgba(255,255,255,0.9)'}}>
+            <p className={`text-gray-800 max-w-2xl font-semibold drop-shadow-md ${
+              isMobile ? 'text-lg mb-6' : 'text-xl mb-8'
+            }`} style={{textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0 0 6px rgba(255,255,255,0.9)'}}>
               {hero.subtitle}
             </p>
             
             {/* Trust Badges with Glass Morphism */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-6">
+            <div className={`flex flex-wrap gap-4 ${
+              isMobile ? 'justify-center mb-4' : 'justify-center lg:justify-start mb-6'
+            }`}>
               {hero.trustBadges.map((badge, index) => (
                 <div 
                   key={index} 
@@ -66,7 +80,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
             
             {/* Social Proof Counters with Enhanced Effects */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mb-8 text-gray-600">
+            <div className={`flex flex-wrap gap-6 text-gray-600 ${
+              isMobile ? 'justify-center mb-6' : 'justify-center lg:justify-start mb-8'
+            }`}>
               <div className="flex items-center gap-2 glass-morphism-dark rounded-full px-3 py-1 animate-bounce-in" style={{animationDelay: '0.1s'}}>
                 <Users className="w-5 h-5 text-green-600 pulse-success drop-shadow-sm" />
                 <span className="text-sm font-technical">
@@ -88,7 +104,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
             
             {/* CTA Buttons with Premium Effects */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className={`flex flex-col gap-4 ${
+              isMobile ? 'justify-center items-center' : 'sm:flex-row justify-center lg:justify-start'
+            }`}>
               <button 
                 className="atomx-gradient-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover-lift btn-gooey font-technical relative overflow-hidden group" 
                 type="button"
@@ -107,7 +125,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
           
           {/* Exchange Rate Widget */}
-          <div className="flex justify-center lg:justify-end">
+          <div className={isMobile ? "flex justify-center mt-8" : "flex justify-center lg:justify-end"}>
             <ExchangeRateWidget 
               usdAmount={usdAmount} 
               setUsdAmount={setUsdAmount} 

@@ -5,10 +5,11 @@ import content from '../../data/content.json';
 
 interface HeaderProps {
   scrollToSection: (sectionId: string) => void;
+  scrollToTop: () => void;
   activeSection?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) => {
+const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSection = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const { navigation } = content;
 
@@ -18,7 +19,17 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, activeSection = '' }) 
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <img src={companyName} alt="AtomX Pay" className="h-[200px] w-auto" />
+            <button
+              onClick={() => {
+                scrollToTop();
+                setIsMenuOpen(false); // Close mobile menu when logo is clicked
+              }}
+              className="transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
+              type="button"
+              aria-label="Scroll to top"
+            >
+              <img src={companyName} alt="AtomX Pay" className="h-[200px] w-auto" />
+            </button>
           </div>
           
           {/* Desktop Navigation */}
