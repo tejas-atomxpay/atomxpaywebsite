@@ -19,8 +19,8 @@ const FAQSection: React.FC = () => {
   }, [searchQuery, faq.questions]);
 
   return (
-    <section id="faq" className={`bg-gray-50 ${
-      isMobile ? 'py-12 pt-20' : 'py-8'
+    <section id="faq" className={`bg-gray-200 scroll-mt-20 ${
+      isMobile ? 'py-12 pt-20' : 'py-16 pt-24'
     }`}>
       <div className="container mx-auto px-4">
         <div className={`text-center ${

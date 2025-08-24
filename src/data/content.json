@@ -6,7 +6,6 @@
       { "id": "business-model", "label": "How It Works" },
       { "id": "faq", "label": "FAQs" },
       { "id": "testimonials", "label": "Testimonials" },
-      { "id": "blog", "label": "Blogs" },
       { "id": "resources", "label": "Resources" }
     ]
   },
@@ -338,7 +337,7 @@
       },
       {
         "question": "What payment methods are supported?",
-        "answer": "AtomX Pay supports: Bank transfers (ACH, IMPS, NEFT, RTGS depending on the country), Debit and credit cards, UPI (for India-based senders), Additional local payment rails where available."
+        "answer": "AtomX Pay supports ACH, Wire, RTP, FedNow, and Debit Cards in the US, as well as UPI, IMPS, and RTGS in India, along with additional local payment rails where available."
       },
       {
         "question": "How long does a transfer take?",

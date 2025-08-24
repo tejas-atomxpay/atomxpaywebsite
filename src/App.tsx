@@ -8,7 +8,6 @@ import ComparisonSection from './components/sections/ComparisonSection';
 import HowItWorksSection from './components/sections/HowItWorksSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import FAQSection from './components/sections/FAQSection';
-import BlogSection from './components/sections/BlogSection';
 import ResourcesSection from './components/sections/ResourcesSection';
 import Footer from './components/layout/Footer';
 import { CurrencyProvider } from './contexts/CurrencyContext';
@@ -125,7 +124,7 @@ const App: React.FC = () => {
       <HowItWorksSection />
       <FAQSection />
       <TestimonialsSection />
-      <BlogSection />
+      {/* <BlogSection /> */}
       <ResourcesSection />
       <Footer />
       
