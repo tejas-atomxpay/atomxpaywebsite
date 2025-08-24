@@ -19,7 +19,7 @@ const FeaturesSection: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="features" className={`bg-white ${
+    <section id="features" className={`bg-gray-50 ${
       isMobile ? 'py-12 pt-20' : 'py-8'
     }`}>
       <div className="container mx-auto px-4">

@@ -80,11 +80,19 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             }`} style={{textShadow: '2px 2px 4px rgba(0,0,0,0.3), 0 0 8px rgba(255,255,255,0.8)'}}>
               {hero.title}
             </h1>
-            <p className={`text-gray-800 max-w-2xl font-semibold drop-shadow-md ${
+            <div className={`text-gray-800 max-w-2xl font-semibold drop-shadow-md ${
               isMobile ? 'text-lg mb-6' : 'text-xl mb-8'
             }`} style={{textShadow: '1px 1px 3px rgba(0,0,0,0.2), 0 0 6px rgba(255,255,255,0.9)'}}>
-              {hero.subtitle}
-            </p>
+              {Array.isArray(hero.subtitle) ? (
+                hero.subtitle.map((line, index) => (
+                  <p key={index} className={index > 0 ? 'mt-1' : ''}>
+                    {line}
+                  </p>
+                ))
+              ) : (
+                <p>{hero.subtitle}</p>
+              )}
+            </div>
             
             {/* Trust Badges with Glass Morphism */}
             <div className={`flex flex-wrap gap-4 ${
@@ -130,14 +138,14 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             <div className={`flex flex-col gap-4 ${
               isMobile ? 'justify-center items-center' : 'sm:flex-row justify-center lg:justify-start'
             }`}>
-              <button 
-                className="atomx-gradient-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover-lift btn-gooey font-technical relative overflow-hidden group" 
-                type="button"
+              <a 
+                href="mailto:contactus@atomxpay.com?subject=Get Started with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI am interested in starting international money transfers with AtomX Pay. Please provide me with more information on how to get started.%0D%0A%0D%0AThank you!"
+                className="atomx-gradient-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover-lift btn-gooey font-technical relative overflow-hidden group inline-block text-center no-underline cursor-pointer" 
                 style={{filter: 'url(#atomx-glow)'}}
               >
                 <span className="relative z-10">{hero.buttons.primary}</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-              </button>
+              </a>
               {/* <button 
                 className="glass-morphism-dark border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 hover:text-purple-600 transition-all duration-300 hover-lift font-technical" 
                 type="button"

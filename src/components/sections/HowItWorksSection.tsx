@@ -15,7 +15,7 @@ const HowItWorksSection: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="business-model" className={`bg-gray-200 ${
+    <section id="business-model" className={`bg-gray-100 ${
       isMobile ? 'py-12 pt-20' : 'py-8'
     }`}>
       <div className="container mx-auto px-4">
@@ -60,9 +60,12 @@ const HowItWorksSection: React.FC = () => {
           }`}>
             {howItWorks.compliance.description}
           </p>
-          <button className="atomx-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity" type="button">
+          <a 
+            href="mailto:contactus@atomxpay.com?subject=Start Your Transfer with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI would like to start a money transfer using AtomX Pay. Please help me get started with the process.%0D%0A%0D%0AThank you!"
+            className="atomx-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity inline-block text-center no-underline cursor-pointer"
+          >
             {howItWorks.compliance.button}
-          </button>
+          </a>
         </div>
       </div>
     </section>

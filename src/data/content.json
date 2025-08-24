@@ -2,21 +2,18 @@
   "navigation": {
     "logo": "AtomX Pay",
     "links": [
-      { "id": "comparison", "label": "Comparison" },
-      { "id": "features", "label": "Why Us" },
+      { "id": "about", "label": "About Us" },
+      { "id": "comparison", "label": "Compare AtomX Pay" },
       { "id": "business-model", "label": "How It Works" },
-      { "id": "faq", "label": "FAQ" },
+      { "id": "faq", "label": "FAQs" },
       { "id": "testimonials", "label": "Testimonials" },
-      { "id": "blog", "label": "Blog" }
-    ],
-    "authButtons": {
-      "signIn": "Sign In",
-      "signUp": "Sign Up"
-    }
+      { "id": "blog", "label": "Blogs" },
+      { "id": "resources", "label": "Resources" }
+    ]
   },
   "hero": {
-    "title": "Global Remittances in 15 Minutes",
-    "subtitle": "No preloaded rates. No banking middleman. No delay. Transparent blockchain transfers.",
+    "title": "Global Remittances. Final Settlement in 15 Minutes.",
+    "subtitle": ["No preloaded rates. No banking middleman. No delay.","Atomic settlement with transparent blockchain transfers."],
     "trustBadges": [
       { "text": "100% Compliant", "icon": "check" },
       { "text": "No Hidden Fees", "icon": "check" },      
@@ -52,46 +49,11 @@
     },
     "supportedPairs": [
       {
-        "from": "INR", 
-        "to": "USD",
-        "fromSymbol": "₹",
-        "toSymbol": "$",
-        "apiPair": "INR_USD"
-      },
-      {
         "from": "USD",
         "to": "INR",
         "fromSymbol": "$",
         "toSymbol": "₹",
         "apiPair": "USD_INR"
-      },
-      {
-        "from": "EUR",
-        "to": "INR",
-        "fromSymbol": "€",
-        "toSymbol": "₹",
-        "apiPair": "EUR_INR"
-      },
-      {
-        "from": "INR",
-        "to": "EUR", 
-        "fromSymbol": "₹",
-        "toSymbol": "€",
-        "apiPair": "INR_EUR"
-      },
-      {
-        "from": "USD",
-        "to": "EUR",
-        "fromSymbol": "$",
-        "toSymbol": "€", 
-        "apiPair": "USD_EUR"
-      },
-      {
-        "from": "EUR",
-        "to": "USD",
-        "fromSymbol": "€",
-        "toSymbol": "$",
-        "apiPair": "EUR_USD"
       }
     ],
     "values": {
@@ -117,68 +79,143 @@
     },
     "categories": {
       "traditional": "Traditional Banking Rails",
-      "msb": "Fintech on Traditional Banking Rails",
+      "msb": "Monet Service Businesses (MSBs) using Traditional Rails",
       "blockchain": "Fintech on Blockchain Rails"
     },
     "providers": [
       {
         "category": "blockchain",
         "name": "AtomX Pay",
-        "exchangeRate": "₹87.28 (Live Exchange Rate)",
-        "transferFee": "$3.00",
-        "recipientGets": "₹87,011",
+        "markupPercent": 0,
+        "fees": {
+          "USD": 3,
+          "EUR": 2.5,
+          "INR": 250
+        },
         "time": "~15 minutes",
         "highlight": true
       },
       {
         "category": "traditional",
         "name": "Wells Fargo",
-        "exchangeRate": "₹82.50 (5% markup)",
-        "transferFee": "$45",
-        "recipientGets": "₹78,787",
+        "markupPercent": 5,
+        "fees": {
+          "USD": 45,
+          "EUR": 40,
+          "INR": 3500
+        },
         "time": "3-5 days"
       },
       {
-        "category": "traditional",
-        "name": "SBI",
-        "exchangeRate": "₹84.00 (3.5% markup)",
-        "transferFee": "$25",
-        "recipientGets": "₹81,900",
+        "category": "traditional", 
+        "name": "ICICI Bank",
+        "markupPercent": 3,
+        "fees": {
+          "USD": 30,
+          "EUR": 25,
+          "INR": 2500
+        },
         "time": "2-3 days"
       },
       {
         "category": "traditional",
-        "name": "ICICI Bank",
-        "exchangeRate": "₹84.50 (3% markup)",
-        "transferFee": "$30",
-        "recipientGets": "₹82,015",
-        "time": "2-3 days"
+        "name": "Citibank",
+        "markupPercent": 4,
+        "fees": {
+          "USD": 35,
+          "EUR": 30,
+          "INR": 2800
+        },
+        "time": "2-4 days"
       },
       {
         "category": "msb",
         "name": "WISE",
-        "exchangeRate": "₹86.50 (1% markup)",
-        "transferFee": "$8",
-        "recipientGets": "₹85,852",
+        "markupPercent": 1,
+        "fees": {
+          "USD": 8,
+          "EUR": 7,
+          "INR": 650
+        },
         "time": "1-2 days"
       },
       {
         "category": "msb",
-        "name": "Remitly",
-        "exchangeRate": "₹85.80 (1.5% markup)",
-        "transferFee": "$4.99",
-        "recipientGets": "₹85,371",
+        "name": "Remitly", 
+        "markupPercent": 1.5,
+        "fees": {
+          "USD": 4.99,
+          "EUR": 4.50,
+          "INR": 400
+        },
         "time": "1-3 days"
       },
       {
         "category": "msb",
-        "name": "MoneyGram",
-        "exchangeRate": "₹84.20 (3.5% markup)",
-        "transferFee": "$12",
-        "recipientGets": "₹83,230",
+        "name": "Western Union",
+        "markupPercent": 3,
+        "fees": {
+          "USD": 15,
+          "EUR": 12,
+          "INR": 1200
+        },
         "time": "1-2 days"
       }
-    ]
+    ],
+    "railsComparison": {
+      "title": "Traditional Banking Rails vs. Blockchain Rails",
+      "subtitle": "Infrastructure comparison showing why blockchain rails deliver superior performance",
+      "aspects": [
+        {
+          "aspect": "Settlement Method",
+          "traditional": "Correspondent banking network",
+          "fintech": "Digital interface, same rails",
+          "atomx": "Direct blockchain settlement"
+        },
+        {
+          "aspect": "Infrastructure",
+          "traditional": "SWIFT/ACH networks",
+          "fintech": "API over traditional rails",
+          "atomx": "Native blockchain protocol"
+        },
+        {
+          "aspect": "Operating Hours",
+          "traditional": "Banking business hours",
+          "fintech": "Limited by banking hours",
+          "atomx": "24/7/365 blockchain network"
+        },
+        {
+          "aspect": "Exchange Rates",
+          "traditional": "Bank-set rates with margins",
+          "fintech": "Pre-loaded pools with markups",
+          "atomx": "Live market rates, zero margin"
+        },
+        {
+          "aspect": "Intermediaries",
+          "traditional": "3-5 correspondent banks",
+          "fintech": "Digital wrapper, same banks",
+          "atomx": "Zero intermediaries"
+        },
+        {
+          "aspect": "Settlement Speed",
+          "traditional": "2-5 business days",
+          "fintech": "1-3 days (still bank-dependent)",
+          "atomx": "15 minutes blockchain confirmation"
+        },
+        {
+          "aspect": "Transparency",
+          "traditional": "Opaque processing",
+          "fintech": "Limited visibility",
+          "atomx": "Full blockchain transparency"
+        },
+        {
+          "aspect": "Cost Structure",
+          "traditional": "Multiple hidden fees",
+          "fintech": "Fees hidden in FX rates",
+          "atomx": "Transparent: Google rate + fee"
+        }
+      ]
+    }
   },
   "howItWorks": {
     "title": "How It Works",
@@ -303,7 +340,7 @@
       },
       {
         "question": "How long does a transfer take?",
-        "answer": "Most transfers are completed in under 15 minutes. Timing may vary slightly depending on: The sending/receiving bank's processing hours, Local regulatory checks or additional verification requirements."
+        "answer": "Transfers are typically completed in 15 minutes when funds are sent through RTP, Zelle, or FedNow, which settle in real time. For transfers made via ACH or Wire, the 15-minute settlement window applies once the funds are received in your AtomX Pay account."
       },
       {
         "question": "Why should I trust AtomX Pay?",
@@ -343,6 +380,27 @@
       }
     ]
   },
+  "about": {
+    "title": "About Us",
+    "subtitle": "\"The Blockchain Rail Pioneer\" - the first true blockchain infrastructure company that rebuilt global remittance from the ground up, rather than digitizing legacy banking systems."
+  },
+  "resources": {
+    "title": "Resources",
+    "subtitle": "Why Blockchain Rails Matter",
+    "content": [
+      "For decades, cross-border payments have been slow, expensive, and dependent on multiple intermediaries. Traditional rails weren't designed for real-time, transparent settlement. Even the largest financial institutions acknowledge the need for change.",
+      "As Jamie Dimon, CEO of JPMorgan Chase, puts it:",
+      "\"Blockchain has the potential to deliver significant improvements in the movement of money — making payments faster, cheaper, and more transparent.\"",
+      "Lael Brainard, former Federal Reserve Governor, highlights the same pain point:",
+      "\"The current cross-border payments system is too slow and too expensive. New technologies, including blockchain, can help improve efficiency and reduce costs for households and businesses.\"",
+      "Industry leaders see blockchain as the foundation of a more efficient global payment system. Daleep Singh, Chief Global Economist at PGIM, notes:",
+      "\"Blockchain technology allows financial institutions to address inefficiencies in cross-border payments by enabling near real-time settlement and reducing reliance on intermediaries.\"",
+      "And Larry Fink, CEO of BlackRock, emphasizes its future role:",
+      "\"We see blockchain as part of the future infrastructure of financial markets. It enables delivery-versus-payment settlement and can bring greater speed and safety to cross-border payments.\"",
+      "Why This Matters",
+      "For everyday users, this means faster transfers, lower costs, and complete transparency. Instead of waiting days and paying hidden fees, blockchain rails deliver money securely in minutes, with final settlement you can trust. At AtomX Pay, we harness these advantages to make global remittances simple, fair, and instant."
+    ]
+  },
   "footer": {
     "company": {
       "name": "AtomX Pay",
@@ -374,11 +432,6 @@
         "email": "contactus@atomxpay.com"
       }
     },
-    "social": [
-      { "platform": "twitter", "url": "https://twitter.com/atomxpay" },
-      { "platform": "linkedin", "url": "https://linkedin.com/company/atomxpay" },
-      { "platform": "facebook", "url": "https://facebook.com/atomxpay" }
-    ],
     "copyright": "© 2025 AtomX Pay. All rights reserved."
   }
 }

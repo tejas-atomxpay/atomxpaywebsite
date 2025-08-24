@@ -13,62 +13,41 @@ const ComparisonSection: React.FC = () => {
   const atomxFee = currentPair.from === 'USD' ? calculator.values.flatFeeUSD : 
                    currentPair.from === 'EUR' ? calculator.values.flatFeeEUR : 
                    calculator.values.flatFeeINR;
-  const atomxTotal = fromAmount + atomxFee;
   
-  // Generate dynamic provider data
+  // Generate dynamic provider data from content.json
   const generateDynamicProviders = () => {
     const baseAmount = fromAmount;
     const liveRate = exchangeRate;
     
-    // Calculate competitor rates with markups
-    const competitors = [
-      // AtomX Pay (our service)
-      {
-        category: 'blockchain',
-        name: 'AtomX Pay',
-        exchangeRate: `${currentPair.toSymbol}${liveRate.toFixed(4)} (Live Exchange Rate)`,
-        transferFee: `${currentPair.fromSymbol}${atomxFee.toFixed(2)}`,
-        recipientGets: `${currentPair.toSymbol}${toAmount.toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 2 })}`,
-        time: calculator.values.transferTime,
-        highlight: true
-      },
-      // Traditional banks with higher markups
-      {
-        category: 'traditional',
-        name: 'Wells Fargo',
-        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.95).toFixed(4)} (5% markup)`,
-        transferFee: currentPair.from === 'USD' ? '$45' : currentPair.from === 'EUR' ? '€40' : '₹3,500',
-        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 45 : currentPair.from === 'EUR' ? 40 : 3500)) * liveRate * 0.95).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
-        time: '3-5 days'
-      },
-      {
-        category: 'traditional',
-        name: 'ICICI Bank',
-        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.97).toFixed(4)} (3% markup)`,
-        transferFee: currentPair.from === 'USD' ? '$30' : currentPair.from === 'EUR' ? '€25' : '₹2,500',
-        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 30 : currentPair.from === 'EUR' ? 25 : 2500)) * liveRate * 0.97).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
-        time: '2-3 days'
-      },
-      // MSB providers
-      {
-        category: 'msb',
-        name: 'WISE',
-        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.99).toFixed(4)} (1% markup)`,
-        transferFee: currentPair.from === 'USD' ? '$8' : currentPair.from === 'EUR' ? '€7' : '₹650',
-        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 8 : currentPair.from === 'EUR' ? 7 : 650)) * liveRate * 0.99).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
-        time: '1-2 days'
-      },
-      {
-        category: 'msb',
-        name: 'Remitly',
-        exchangeRate: `${currentPair.toSymbol}${(liveRate * 0.985).toFixed(4)} (1.5% markup)`,
-        transferFee: currentPair.from === 'USD' ? '$4.99' : currentPair.from === 'EUR' ? '€4.50' : '₹400',
-        recipientGets: `${currentPair.toSymbol}${((baseAmount - (currentPair.from === 'USD' ? 4.99 : currentPair.from === 'EUR' ? 4.50 : 400)) * liveRate * 0.985).toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: 0 })}`,
-        time: '1-3 days'
+    return comparison.providers.map(provider => {
+      const markupMultiplier = 1 - (provider.markupPercent / 100);
+      const providerFee = provider.fees[currentPair.from as keyof typeof provider.fees] || 0;
+      const currencySymbol = currentPair.from === 'USD' ? '$' : currentPair.from === 'EUR' ? '€' : '₹';
+      
+      // Calculate recipient amount
+      let recipientAmount;
+      if (provider.highlight) {
+        // AtomX Pay - no markup, live rate
+        recipientAmount = toAmount;
+      } else {
+        // Other providers - apply markup and subtract fees
+        recipientAmount = (baseAmount - providerFee) * liveRate * markupMultiplier;
       }
-    ];
-    
-    return competitors;
+      
+      return {
+        category: provider.category,
+        name: provider.name,
+        exchangeRate: provider.highlight 
+          ? `${currentPair.toSymbol}${liveRate.toFixed(4)} (Live Exchange Rate)`
+          : `${currentPair.toSymbol}${(liveRate * markupMultiplier).toFixed(4)} (${provider.markupPercent}% markup)`,
+        transferFee: provider.highlight
+          ? `${currentPair.fromSymbol}${atomxFee.toFixed(2)}`
+          : `${currencySymbol}${providerFee}`,
+        recipientGets: `${currentPair.toSymbol}${recipientAmount.toLocaleString(currentPair.to === 'INR' ? 'en-IN' : 'en-US', { maximumFractionDigits: provider.highlight ? 2 : 0 })}`,
+        time: provider.highlight ? calculator.values.transferTime : provider.time,
+        highlight: provider.highlight || false
+      };
+    });
   };
   
   const dynamicProviders = generateDynamicProviders();
@@ -264,6 +243,77 @@ const ComparisonSection: React.FC = () => {
           
           {/* Fintech with Traditional Banking Table */}
           {renderTable('msb', comparison.categories.msb, 'text-primary')}
+        </div>
+        
+        {/* Traditional Banking Rails vs. Blockchain Rails Table */}
+        <div className="max-w-7xl mx-auto mt-12">
+          <div className="text-center mb-8">
+            <h3 className={`font-bold text-primary ${
+              isMobile ? 'text-lg mb-2' : 'text-2xl mb-4'
+            }`}>
+              {comparison.railsComparison.title}
+            </h3>
+            <p className="text-gray-600 text-sm">
+              {comparison.railsComparison.subtitle}
+            </p>
+          </div>
+          
+          {/* Desktop Table */}
+          <div className="hidden lg:block overflow-x-auto">
+            <table className="w-full bg-white rounded-lg shadow-md overflow-hidden border border-gray-300">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="py-3 px-4 text-left font-semibold text-gray-900 text-sm">Aspect</th>
+                  <th className="py-3 px-4 text-center font-semibold text-gray-900 text-sm">Traditional Banking Rails</th>
+                  <th className="py-3 px-4 text-center font-semibold text-gray-900 text-sm">Fintech on Banking Rails</th>
+                  <th className="py-3 px-4 text-center font-semibold text-primary text-sm">AtomX Pay Blockchain Rails</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.railsComparison.aspects.map((row, index) => (
+                  <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
+                    <td className="py-3 px-4 font-medium text-gray-900 text-sm">{row.aspect}</td>
+                    <td className="py-3 px-4 text-center text-gray-700 text-sm">{row.traditional}</td>
+                    <td className="py-3 px-4 text-center text-gray-700 text-sm">{row.fintech}</td>
+                    <td className="py-3 px-4 text-center font-semibold text-green-600 text-sm bg-green-50">
+                      {row.aspect === "Cost Structure" 
+                        ? `Transparent: Google rate + ${currentPair.fromSymbol}${atomxFee.toFixed(2)}` 
+                        : row.atomx
+                      }
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          {/* Mobile Cards */}
+          <div className="lg:hidden space-y-4">
+            {comparison.railsComparison.aspects.slice(0, 4).map((row, index) => (
+              <div key={index} className="bg-white rounded-lg p-4 shadow-md border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-3">{row.aspect}</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-xs font-medium text-gray-500">Traditional:</span>
+                    <span className="text-sm text-gray-700 text-right flex-1 ml-2">{row.traditional}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-xs font-medium text-gray-500">Fintech:</span>
+                    <span className="text-sm text-gray-700 text-right flex-1 ml-2">{row.fintech}</span>
+                  </div>
+                  <div className="flex justify-between bg-green-50 p-2 rounded">
+                    <span className="text-xs font-medium text-primary">AtomX Pay:</span>
+                    <span className="text-sm font-semibold text-green-600 text-right flex-1 ml-2">
+                      {row.aspect === "Cost Structure" 
+                        ? `Transparent: Google rate + ${currentPair.fromSymbol}${atomxFee.toFixed(2)}` 
+                        : row.atomx
+                      }
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         
         {/* Footer Note - Compact */}

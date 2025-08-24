@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RefreshCw, AlertCircle, ArrowUpDown, ChevronDown } from 'lucide-react';
+import { RefreshCw, AlertCircle, ChevronDown } from 'lucide-react';
 import { ExchangeRateWidgetProps } from '../../types';
 import content from '../../data/content.json';
 
@@ -32,17 +32,6 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
   // Calculate total cost - fee is already in the correct currency
   const totalCost = fromAmount + transferFee;
   
-  const swapCurrencies = () => {
-    if (onPairChange) {
-      // Find the reverse pair
-      const reversePair = calculator.supportedPairs.find(
-        pair => pair.from === activePair.to && pair.to === activePair.from
-      );
-      if (reversePair) {
-        onPairChange(reversePair);
-      }
-    }
-  };
 
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = parseFloat(e.target.value) || 0;
@@ -52,8 +41,8 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
       setInputError('Amount cannot be negative');
       return;
     }
-    if (value > 100000) {
-      setInputError(`Amount cannot exceed ${activePair.fromSymbol}100,000`);
+    if (value > 1000000) {
+      setInputError(`Amount cannot exceed ${activePair.fromSymbol}1,000,000`);
       return;
     }
     
@@ -70,7 +59,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
         <h3 className="text-lg font-bold text-gray-800 mb-3 text-center font-technical">{calculator.title}</h3>
         
         {/* Currency Pair Selector */}
-        {onPairChange && (
+        {onPairChange && calculator.supportedPairs.length > 1 && (
           <div className="mb-3">
             <label className="block text-xs font-medium text-gray-700 mb-1">Select Currency Pair</label>
             <div className="relative">
@@ -120,16 +109,6 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
         <div>
           <div className="flex items-center justify-between mb-2">
             <label className="block text-xs font-medium text-gray-700">{calculator.labels.youSend}</label>
-            {onPairChange && (
-              <button
-                onClick={swapCurrencies}
-                className="p-0.5 hover:bg-gray-100 rounded-full transition-colors"
-                type="button"
-                title="Swap currencies"
-              >
-                <ArrowUpDown className="w-4 h-4 text-gray-500" />
-              </button>
-            )}
           </div>
           <div className="relative">
             <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 font-semibold text-sm">{activePair.fromSymbol}</span>
@@ -211,28 +190,31 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
         )}
       </div>
       
-        <button 
-          className={`w-full py-2.5 rounded-md text-sm font-semibold mt-3 transition-all font-technical btn-gooey relative overflow-hidden group ${
-            inputError || fromAmount <= 0
-              ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              : 'atomx-gradient-accent text-white hover-lift'
-          }`} 
-          type="button"
-          disabled={inputError !== '' || fromAmount <= 0}
-          style={inputError || fromAmount <= 0 ? {} : {filter: 'url(#atomx-glow)'}}
-        >
-          {isLoading ? (
-            <div className="flex items-center justify-center gap-2 relative z-10">
-              <RefreshCw className="w-5 h-5 animate-spin" />
-              <span>Calculating...</span>
-            </div>
-          ) : (
+        {inputError || fromAmount <= 0 ? (
+          <button 
+            className="w-full py-2.5 rounded-md text-sm font-semibold mt-3 transition-all font-technical bg-gray-300 text-gray-500 cursor-not-allowed"
+            type="button"
+            disabled
+          >
             <span className="relative z-10">{calculator.button}</span>
-          )}
-          {!inputError && fromAmount > 0 && (
+          </button>
+        ) : (
+          <a 
+            href={`mailto:contactus@atomxpay.com?subject=Start Transfer - ${activePair.fromSymbol}${fromAmount} to ${activePair.to}&body=Hello AtomX Pay team,%0D%0A%0D%0AI would like to start a money transfer:%0D%0A%0D%0AAmount: ${activePair.fromSymbol}${fromAmount}%0D%0AFrom: ${activePair.from}%0D%0ATo: ${activePair.to}%0D%0ARecipient will receive: ${activePair.toSymbol}${toAmount.toLocaleString()}%0D%0ATransfer fee: ${activePair.fromSymbol}${transferFee}%0D%0A%0D%0APlease help me complete this transfer.%0D%0A%0D%0AThank you!`}
+            className="w-full py-2.5 rounded-md text-sm font-semibold mt-3 transition-all font-technical btn-gooey relative overflow-hidden group atomx-gradient-accent text-white hover-lift inline-block text-center no-underline cursor-pointer"
+            style={{filter: 'url(#atomx-glow)'}}
+          >
+            {isLoading ? (
+              <div className="flex items-center justify-center gap-2 relative z-10">
+                <RefreshCw className="w-5 h-5 animate-spin" />
+                <span>Calculating...</span>
+              </div>
+            ) : (
+              <span className="relative z-10">{calculator.button}</span>
+            )}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-          )}
-        </button>
+          </a>
+        )}
       </div>
     </div>
   );

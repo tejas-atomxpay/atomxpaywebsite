@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
                 scrollToTop();
                 setIsMenuOpen(false); // Close mobile menu when logo is clicked
               }}
-              className="transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
+              className="cursor-pointer transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
               type="button"
               aria-label="Scroll to top"
             >
@@ -53,16 +53,6 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
             ))}
           </div>
           
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button className="text-white/95 hover:text-white font-medium transition-colors cursor-pointer drop-shadow-sm" type="button">
-              {navigation.authButtons.signIn}
-            </button>
-            <button className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-white/90 transition-all cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button" style={{filter: 'url(#atomx-glow)'}}>
-              <span className="relative z-10">{navigation.authButtons.signUp}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            </button>
-          </div>
 
           {/* Mobile Menu Button */}
           <button 
@@ -99,15 +89,6 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
                   {activeSection === link.id && <span className="ml-2 text-accent">•</span>}
                 </button>
               ))}
-              <div className="pt-4 border-t border-white/10">
-                <button className="block w-full text-left text-white/95 hover:text-white font-medium mb-2 transition-colors cursor-pointer drop-shadow-sm" type="button">
-                  {navigation.authButtons.signIn}
-                </button>
-                <button className="bg-white text-primary px-6 py-2 rounded-lg hover:bg-white/90 transition-all w-full text-center cursor-pointer hover-lift font-technical btn-gooey relative overflow-hidden group" type="button">
-                  <span className="relative z-10">{navigation.authButtons.signUp}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                </button>
-              </div>
             </div>
           </div>
         </div>

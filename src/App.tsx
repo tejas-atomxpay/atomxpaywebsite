@@ -4,12 +4,13 @@ import Lenis from 'lenis';
 import './App.css';
 import Header from './components/layout/Header';
 import HeroSection from './components/sections/HeroSection';
+import AboutSection from './components/sections/AboutSection';
 import ComparisonSection from './components/sections/ComparisonSection';
 import HowItWorksSection from './components/sections/HowItWorksSection';
-import FeaturesSection from './components/sections/FeaturesSection';
 import TestimonialsSection from './components/sections/TestimonialsSection';
 import FAQSection from './components/sections/FAQSection';
 import BlogSection from './components/sections/BlogSection';
+import ResourcesSection from './components/sections/ResourcesSection';
 import Footer from './components/layout/Footer';
 import { CurrencyProvider } from './contexts/CurrencyContext';
 
@@ -121,12 +122,13 @@ const App: React.FC = () => {
       
       <HeroSection />
       
+      <AboutSection />
       <ComparisonSection />
-      <FeaturesSection />
       <HowItWorksSection />
       <FAQSection />
       <TestimonialsSection />
       <BlogSection />
+      <ResourcesSection />
       <Footer />
       
       {/* Back to Top Button */}
