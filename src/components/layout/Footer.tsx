@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImage from '../../assets/logo.png';
+// import companyName from '../../assets/company_name_new.png';
 import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
@@ -11,14 +11,14 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
-        <div className={`${isMobile ? 'py-8' : 'py-12'}`}>
+        <div className={`${isMobile ? 'py-6' : 'py-8'}`}>
           <div className={`grid gap-8 ${
             isMobile ? 'grid-cols-1' : 'md:grid-cols-3'
           }`}>
             {/* Column 1: AtomX Pay */}
             <div className={`${isMobile ? 'text-center' : ''}`}>
               <div className={`flex items-center mb-4 ${isMobile ? 'justify-center' : ''}`}>
-                <img src={logoImage} alt="AtomX Pay" className="h-12 w-12 mr-3" />
+                {/* <img src={companyName} alt="AtomX Pay" className="h-12 w-12 mr-3" /> */}
                 <span className="text-2xl font-bold">{footer.company.name}</span>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed mb-4">

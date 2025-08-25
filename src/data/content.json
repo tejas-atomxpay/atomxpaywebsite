@@ -105,6 +105,17 @@
         "time": "3-5 days"
       },
       {
+        "category": "traditional",
+        "name": "SBI",
+        "markupPercent": 4,
+        "fees": {
+          "USD": 35,
+          "EUR": 30,
+          "INR": 2800
+        },
+        "time": "2-4 days"
+      },
+      {
         "category": "traditional", 
         "name": "ICICI Bank",
         "markupPercent": 3,
@@ -116,24 +127,13 @@
         "time": "2-3 days"
       },
       {
-        "category": "traditional",
-        "name": "Citibank",
-        "markupPercent": 4,
-        "fees": {
-          "USD": 35,
-          "EUR": 30,
-          "INR": 2800
-        },
-        "time": "2-4 days"
-      },
-      {
         "category": "msb",
-        "name": "WISE",
-        "markupPercent": 1,
+        "name": "Western Union",
+        "markupPercent": 3,
         "fees": {
-          "USD": 8,
-          "EUR": 7,
-          "INR": 650
+          "USD": 15,
+          "EUR": 12,
+          "INR": 1200
         },
         "time": "1-2 days"
       },
@@ -150,12 +150,12 @@
       },
       {
         "category": "msb",
-        "name": "Western Union",
-        "markupPercent": 3,
+        "name": "WISE",
+        "markupPercent": 1,
         "fees": {
-          "USD": 15,
-          "EUR": 12,
-          "INR": 1200
+          "USD": 8,
+          "EUR": 7,
+          "INR": 650
         },
         "time": "1-2 days"
       }
@@ -302,7 +302,8 @@
         "text": "I used to send money to my parents in India through traditional money transfer operators, and it always took a couple of days. With AtomX Pay, my transfers reach them in minutes via UPI — no hidden fees, no delays. It's the easiest way I've ever supported my family.",
         "author": {
           "name": "Sandeep R.",
-          "title": "Family Remittances",
+          "title": "Software Engineer",
+          "subtitle": "Family Remittances",
           "location": "New York"
         }
       },
@@ -311,7 +312,8 @@
         "text": "With traditional services, I never knew how much my family would actually receive — exchange rates and fees kept changing. AtomX Pay is different. What I see is what they get, every time, and the transfer is complete in minutes.",
         "author": {
           "name": "Rahul K.",
-          "title": "Transparent & Fair",
+          "title": "Financial Analyst",
+          "subtitle": "Transparent & Fair",
           "location": "Chicago"
         }
       },
@@ -320,7 +322,8 @@
         "text": "When my brother had a medical emergency, a bank wire would have taken 2–3 days. AtomX Pay delivered the money in under 15 minutes. Knowing I can send funds instantly when my family needs me most has made all the difference.",
         "author": {
           "name": "Priya M.",
-          "title": "Emergency Transfers",
+          "title": "Product Manager",
+          "subtitle": "Emergency Transfers",
           "location": "San Francisco"
         }
       }
@@ -405,7 +408,7 @@
   "footer": {
     "company": {
       "name": "AtomX Pay",
-      "description": "Revolutionizing cross-border payments with blockchain technology. Fast, secure, and transparent money transfers to India."
+      "description": "Revolutionizing cross-border payments with blockchain technology. Fast, secure, and transparent global money transfers."
     },
     "sections": [
       {

@@ -265,7 +265,7 @@ const ComparisonSection: React.FC = () => {
                 <tr>
                   <th className="py-3 px-4 text-left font-semibold text-gray-900 text-sm">Aspect</th>
                   <th className="py-3 px-4 text-center font-semibold text-gray-900 text-sm">Traditional Banking Rails</th>
-                  <th className="py-3 px-4 text-center font-semibold text-gray-900 text-sm">Fintech on Banking Rails</th>
+                  <th className="py-3 px-4 text-center font-semibold text-gray-900 text-sm">MSB on Banking Rails</th>
                   <th className="py-3 px-4 text-center font-semibold text-primary text-sm">AtomX Pay Blockchain Rails</th>
                 </tr>
               </thead>
@@ -298,7 +298,7 @@ const ComparisonSection: React.FC = () => {
                     <span className="text-sm text-gray-700 text-right flex-1 ml-2">{row.traditional}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-xs font-medium text-gray-500">Fintech:</span>
+                    <span className="text-xs font-medium text-gray-500">MSB:</span>
                     <span className="text-sm text-gray-700 text-right flex-1 ml-2">{row.fintech}</span>
                   </div>
                   <div className="flex justify-between bg-green-50 p-2 rounded">

@@ -7,6 +7,7 @@ interface TestimonialCardProps {
   author: {
     name: string;
     title: string;
+    subtitle?: string;
     location: string;
   };
 }
@@ -21,7 +22,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ rating, text, author 
       </div>
       <p className="text-gray-600 mb-6 text-lg italic leading-relaxed">"{text}"</p>
       <div className="border-t pt-4 text-center">
-        {/* Highlighted Title Badge */}
+        {/* Professional Designation */}
         <div className="mb-3">
           <span className="inline-block bg-gradient-to-r from-primary to-accent text-white text-sm font-bold px-3 py-1 rounded-full">
             {author.title}
@@ -30,6 +31,16 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ rating, text, author 
         
         {/* Prominent Name */}
         <h4 className="font-bold text-xl text-gray-900 mb-1">{author.name}</h4>
+        
+        {/* Use Case Badge */}
+        {author.subtitle && (
+          <div className="mb-2">
+            <span className="inline-block bg-gray-100 text-gray-700 text-xs font-medium px-2 py-1 rounded-full">
+              {author.subtitle}
+            </span>
+          </div>
+        )}
+        
         <p className="text-gray-500 font-medium">{author.location}</p>
       </div>
     </div>
