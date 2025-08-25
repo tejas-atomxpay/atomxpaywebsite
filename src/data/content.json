@@ -55,8 +55,8 @@
       }
     ],
     "values": {
-      "flatFee": 3,
-      "flatFeeUSD": 3,
+      "flatFee": 4,
+      "flatFeeUSD": 4,
       "flatFeeINR": 250,
       "flatFeeEUR": 2.5,
       "transferTime": "~15 minutes",
