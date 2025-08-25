@@ -52,7 +52,7 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
 
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-xl max-w-sm w-full glass-morphism hover-lift relative overflow-hidden group">
+    <div className="bg-white rounded-xl p-6 shadow-xl max-w-sm w-full glass-morphism hover-lift relative overflow-hidden group min-h-[500px]">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 atomx-gradient-trust opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
       <div className="relative z-10">

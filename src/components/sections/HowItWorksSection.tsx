@@ -15,7 +15,7 @@ const HowItWorksSection: React.FC = () => {
 
   return (
     <section id="business-model" className={`bg-white scroll-mt-20 ${
-      isMobile ? 'py-12 pt-20' : 'py-16 pt-24'
+      isMobile ? 'py-12' : 'py-8'
     }`}>
       <div className="container mx-auto px-4">
         <div className={`text-center ${
