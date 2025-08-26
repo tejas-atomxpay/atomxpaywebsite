@@ -25,59 +25,61 @@ const ResourcesSection: React.FC = () => {
           </h3>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-xl p-8 shadow-lg">
-            {resources.content.map((paragraph, index) => {
-              // Check if it's a quote (starts and ends with quotes)
-              const isQuote = paragraph.startsWith('"') && paragraph.endsWith('"');
-              // Check if it's a section header like "Why This Matters"
-              const isHeader = paragraph === "Why This Matters" || 
-                               paragraph.includes("CEO of") || 
-                               paragraph.includes("Federal Reserve Governor") ||
-                               paragraph.includes("Chief Global Economist") ||
-                               paragraph.includes("CEO of BlackRock");
-              
-              if (isHeader && !paragraph.includes("CEO of") && !paragraph.includes("Federal Reserve") && !paragraph.includes("Chief Global") && !paragraph.includes("BlackRock")) {
-                return (
-                  <h4 key={index} className={`font-bold text-gray-900 mt-8 mb-4 ${
-                    isMobile ? 'text-lg' : 'text-xl'
-                  }`}>
-                    {paragraph}
-                  </h4>
-                );
-              }
-              
-              if (isQuote) {
-                return (
-                  <blockquote key={index} className={`italic text-gray-600 border-l-4 border-primary pl-6 my-6 ${
+            {/* Introduction */}
+            <p className={`text-gray-700 leading-relaxed mb-8 ${
+              isMobile ? 'text-base' : 'text-lg'
+            }`}>
+              {resources.introduction}
+            </p>
+            
+            {/* Industry Leader Quotes */}
+            <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
+              {resources.quotes.map((quote, index) => (
+                <div key={index} className="bg-gray-50 rounded-lg p-6">
+                  <blockquote className={`italic text-gray-600 mb-4 ${
                     isMobile ? 'text-base' : 'text-lg'
                   }`}>
-                    {paragraph}
+                    "{quote.quote}"
                   </blockquote>
-                );
-              }
-              
-              // Attribution lines (mentions CEO, Governor, etc.)
-              if (paragraph.includes("CEO of") || paragraph.includes("Federal Reserve Governor") || 
-                  paragraph.includes("Chief Global Economist") || paragraph.includes("emphasizes")) {
-                return (
-                  <p key={index} className={`text-gray-700 font-medium mb-2 ${
-                    isMobile ? 'text-sm' : 'text-base'
-                  }`}>
-                    {paragraph}
-                  </p>
-                );
-              }
-              
-              // Regular paragraphs
-              return (
-                <p key={index} className={`text-gray-700 leading-relaxed mb-4 ${
-                  isMobile ? 'text-base' : 'text-lg'
-                }`}>
-                  {paragraph}
-                </p>
-              );
-            })}
+                  
+                  <div className="flex items-center mt-4">
+                    <img 
+                      src={quote.author.image} 
+                      alt={quote.author.name}
+                      className="w-12 h-12 rounded-full object-cover mr-4"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(quote.author.name)}&background=5e29a3&color=fff&size=48`;
+                      }}
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">
+                        {quote.author.name}
+                      </p>
+                      <p className="text-gray-600 text-xs">
+                        {quote.author.title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            {/* Conclusion */}
+            <div className="mt-8 pt-8 border-t border-gray-200">
+              <h4 className={`font-bold text-gray-900 mb-4 ${
+                isMobile ? 'text-lg' : 'text-xl'
+              }`}>
+                {resources.conclusion.title}
+              </h4>
+              <p className={`text-gray-700 leading-relaxed ${
+                isMobile ? 'text-base' : 'text-lg'
+              }`}>
+                {resources.conclusion.content}
+              </p>
+            </div>
           </div>
         </div>
       </div>

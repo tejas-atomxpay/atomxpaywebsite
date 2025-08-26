@@ -391,19 +391,45 @@
   "resources": {
     "title": "Resources",
     "subtitle": "Why Blockchain Rails Matter",
-    "content": [
-      "For decades, cross-border payments have been slow, expensive, and dependent on multiple intermediaries. Traditional rails weren't designed for real-time, transparent settlement. Even the largest financial institutions acknowledge the need for change.",
-      "As Jamie Dimon, CEO of JPMorgan Chase, puts it:",
-      "\"Blockchain has the potential to deliver significant improvements in the movement of money — making payments faster, cheaper, and more transparent.\"",
-      "Lael Brainard, former Federal Reserve Governor, highlights the same pain point:",
-      "\"The current cross-border payments system is too slow and too expensive. New technologies, including blockchain, can help improve efficiency and reduce costs for households and businesses.\"",
-      "Industry leaders see blockchain as the foundation of a more efficient global payment system. Daleep Singh, Chief Global Economist at PGIM, notes:",
-      "\"Blockchain technology allows financial institutions to address inefficiencies in cross-border payments by enabling near real-time settlement and reducing reliance on intermediaries.\"",
-      "And Larry Fink, CEO of BlackRock, emphasizes its future role:",
-      "\"We see blockchain as part of the future infrastructure of financial markets. It enables delivery-versus-payment settlement and can bring greater speed and safety to cross-border payments.\"",
-      "Why This Matters",
-      "For everyday users, this means faster transfers, lower costs, and complete transparency. Instead of waiting days and paying hidden fees, blockchain rails deliver money securely in minutes, with final settlement you can trust. At AtomX Pay, we harness these advantages to make global remittances simple, fair, and instant."
-    ]
+    "introduction": "For decades, cross-border payments have been slow, expensive, and dependent on multiple intermediaries. Traditional rails weren't designed for real-time, transparent settlement. Even the largest financial institutions acknowledge the need for change.",
+    "quotes": [
+      {
+        "quote": "Blockchain has the potential to deliver significant improvements in the movement of money — making payments faster, cheaper, and more transparent.",
+        "author": {
+          "name": "Jamie Dimon",
+          "title": "CEO of JPMorgan Chase",
+          "image": "/images/jamie-dimon.jpg"
+        }
+      },
+      {
+        "quote": "The current cross-border payments system is too slow and too expensive. New technologies, including blockchain, can help improve efficiency and reduce costs for households and businesses.",
+        "author": {
+          "name": "Lael Brainard",
+          "title": "Former Federal Reserve Governor",
+          "image": "/images/lael-brainard.jpg"
+        }
+      },
+      {
+        "quote": "Blockchain technology allows financial institutions to address inefficiencies in cross-border payments by enabling near real-time settlement and reducing reliance on intermediaries.",
+        "author": {
+          "name": "Daleep Singh",
+          "title": "Chief Global Economist at PGIM",
+          "image": "/images/daleep-singh.jpg"
+        }
+      },
+      {
+        "quote": "We see blockchain as part of the future infrastructure of financial markets. It enables delivery-versus-payment settlement and can bring greater speed and safety to cross-border payments.",
+        "author": {
+          "name": "Larry Fink",
+          "title": "CEO of BlackRock",
+          "image": "/images/larry-fink.jpg"
+        }
+      }
+    ],
+    "conclusion": {
+      "title": "Why This Matters",
+      "content": "For everyday users, this means faster transfers, lower costs, and complete transparency. Instead of waiting days and paying hidden fees, blockchain rails deliver money securely in minutes, with final settlement you can trust. At AtomX Pay, we harness these advantages to make global remittances simple, fair, and instant."
+    }
   },
   "footer": {
     "company": {
@@ -416,8 +442,7 @@
         "links": [
           { "label": "Send Money", "href": "#" },
           { "label": "Privacy Policy", "href": "#" },
-          { "label": "Terms of Service", "href": "#" },
-          { "label": "Contact Us", "href": "#" }
+          { "label": "Terms of Service", "href": "#" }
         ]
       }
     ],
@@ -430,7 +455,7 @@
       },
       "india": {
         "title": "India Office",
-        "address": "323, Gemstar Commercial Complex, Kachpada\n Malad (West), Mumbai – 400064, India",
+        "address": "323, Gemstar Commercial Complex, Kachpada\n Malad (West), Mumbai – 400064",
         "phone": "+91 9920453232",
         "email": "contactus@atomxpay.com"
       }

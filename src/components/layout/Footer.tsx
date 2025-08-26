@@ -31,17 +31,15 @@ const Footer: React.FC = () => {
             
             {/* Column 2: Quick Links */}
             <div className={`${isMobile ? 'text-center mt-6' : ''}`}>
-              <h3 className="text-white font-semibold mb-4 text-lg">Quick Links</h3>
+              <h3 className="text-white font-semibold mb-4 text-lg">{footer.sections[0].title}</h3>
               <ul className="space-y-2">
-                {footer.sections.map((section) => 
-                  section.links.map((link, linkIndex) => (
-                    <li key={linkIndex}>
-                      <a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-200 text-sm hover:underline cursor-pointer">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))
-                )}
+                {footer.sections[0].links.map((link, linkIndex) => (
+                  <li key={linkIndex}>
+                    <a href={link.href} className="text-gray-300 hover:text-white transition-colors duration-200 text-sm hover:underline cursor-pointer">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
             
@@ -67,6 +65,19 @@ const Footer: React.FC = () => {
                 
               </div>
             </div>
+          </div>
+        </div>
+        
+        {/* Bottom Section with Email */}
+        <div className="border-t border-gray-800 py-4">
+          <div className="text-center">
+            For any queries or grievances, please write to us at{" "}
+            <a 
+              href="mailto:contactus@atomxpay.com" 
+              className="text-gray-300 hover:text-white transition-colors duration-200 text-sm hover:underline"
+            >
+              contactus@atomxpay.com
+            </a>
           </div>
         </div>
       </div>
