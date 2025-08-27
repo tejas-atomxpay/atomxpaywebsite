@@ -21,7 +21,9 @@
       "Bash(curl:*)",
       "Bash(node:*)",
       "mcp__ide__getDiagnostics",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "WebSearch",
+      "WebFetch(domain:unsplash.com)"
     ],
     "deny": [],
     "ask": []
