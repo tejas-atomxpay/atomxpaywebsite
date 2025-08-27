@@ -28,13 +28,11 @@ const BlogSection: React.FC = () => {
         <div className={`grid gap-8 max-w-6xl mx-auto ${
           isMobile ? 'grid-cols-1' : 'md:grid-cols-3'
         }`}>
-          {blog.posts.map((post, index) => (
+          {blog.posts.filter(post => post && post.id).map((post, index) => (
             <BlogCard
-              key={index}
-              title={post.title}
-              excerpt={post.excerpt}
-              date={post.date}
-              readTime={post.readTime}
+              key={post.id}
+              post={post}
+              variant="default"
             />
           ))}
         </div>

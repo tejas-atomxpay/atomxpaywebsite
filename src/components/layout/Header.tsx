@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useRouter } from '@tanstack/react-router';
 import companyName from '../../assets/company_name.png';
 import content from '../../data/content.json';
 
@@ -11,7 +12,23 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSection = '' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const router = useRouter();
   const { navigation } = content;
+
+  const handleNavigation = (sectionId: string) => {
+    // If we're not on the homepage, navigate there first
+    if (router.state.location.pathname !== '/') {
+      router.navigate({ to: '/' }).then(() => {
+        // Small delay to ensure the page has loaded
+        setTimeout(() => {
+          scrollToSection(sectionId);
+        }, 100);
+      });
+    } else {
+      // We're already on homepage, just scroll
+      scrollToSection(sectionId);
+    }
+  };
 
   return (
     <header className="shadow-sm sticky top-0 z-50 backdrop-blur-md border-b border-white/20" style={{background: 'linear-gradient(135deg, rgba(94, 41, 163, 0.92) 0%, rgba(124, 58, 237, 0.88) 100%)'}}>
@@ -21,12 +38,16 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
           <div className="flex items-center gap-3">
             <button
               onClick={() => {
-                scrollToTop();
+                if (router.state.location.pathname !== '/') {
+                  router.navigate({ to: '/' });
+                } else {
+                  scrollToTop();
+                }
                 setIsMenuOpen(false); // Close mobile menu when logo is clicked
               }}
               className="cursor-pointer transition-transform duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/20 rounded-lg"
               type="button"
-              aria-label="Scroll to top"
+              aria-label="Navigate to homepage"
             >
               <img src={companyName} alt="AtomX Pay" className="h-[200px] w-auto" />
             </button>
@@ -37,7 +58,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
             {navigation.links.map((link) => (
               <button 
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => handleNavigation(link.id)}
                 className={`transition-colors font-medium cursor-pointer relative ${
                   activeSection === link.id 
                     ? 'text-white drop-shadow-sm' 
@@ -75,7 +96,7 @@ const Header: React.FC<HeaderProps> = ({ scrollToSection, scrollToTop, activeSec
                 <button 
                   key={link.id}
                   onClick={() => {
-                    scrollToSection(link.id);
+                    handleNavigation(link.id);
                     setIsMenuOpen(false);
                   }}
                   className={`text-left transition-colors font-medium cursor-pointer drop-shadow-sm ${

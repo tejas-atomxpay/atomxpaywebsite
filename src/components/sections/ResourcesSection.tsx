@@ -1,14 +1,63 @@
 import React from 'react';
+import { Link } from '@tanstack/react-router';
 import { useIsMobile } from '../../hooks/use-mobile';
+import BlogCard from '../ui/BlogCard';
 import content from '../../data/content.json';
 
 const ResourcesSection: React.FC = () => {
-  const { resources } = content;
+  const { blog } = content;
   const isMobile = useIsMobile();
 
+  // Safely get blog posts with fallback and validation
+  const blogPosts = blog?.posts || [];
+  
+  // Filter and validate blog posts - ensure each post has required fields
+  const validBlogPosts = blogPosts.filter(post => 
+    post && 
+    typeof post === 'object' && 
+    post.id && 
+    post.title && 
+    post.excerpt && 
+    post.date && 
+    post.readTime && 
+    post.category && 
+    post.image
+  );
+  
+  // No longer using featured/regular separation since we simplified the layout
+
+  // If no valid blog posts available, show a message
+  if (validBlogPosts.length === 0) {
+    return (
+      <section id="resources" className={`bg-gray-50 scroll-mt-20 ${
+        isMobile ? 'py-12' : 'py-16'
+      }`}>
+        <div className="container mx-auto px-4">
+          <div className={`text-center ${
+            isMobile ? 'mb-8' : 'mb-12'
+          }`}>
+            <h2 className={`font-bold text-black ${
+              isMobile ? 'text-2xl mb-3' : 'text-4xl mb-6'
+            }`}>{blog.title}</h2>
+            
+            <p className={`text-gray-600 max-w-2xl mx-auto ${
+              isMobile ? 'text-base' : 'text-lg'
+            }`}>
+              {blog.subtitle}
+            </p>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-gray-500">No resources available at the moment.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section id="resources" className={`bg-gray-200 scroll-mt-20 ${
-      isMobile ? 'py-12' : 'py-8'
+    <section id="resources" className={`bg-gray-50 scroll-mt-20 ${
+      isMobile ? 'py-12' : 'py-16'
     }`}>
       <div className="container mx-auto px-4">
         <div className={`text-center ${
@@ -16,70 +65,40 @@ const ResourcesSection: React.FC = () => {
         }`}>
           <h2 className={`font-bold text-black ${
             isMobile ? 'text-2xl mb-3' : 'text-4xl mb-6'
-          }`}>{resources.title}</h2>
+          }`}>{blog.title}</h2>
           
-          <h3 className={`font-semibold text-gray-800 ${
-            isMobile ? 'text-lg mb-4' : 'text-2xl mb-8'
+          <p className={`text-gray-600 max-w-2xl mx-auto ${
+            isMobile ? 'text-base' : 'text-lg'
           }`}>
-            {resources.subtitle}
-          </h3>
+            {blog.subtitle}
+          </p>
         </div>
         
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-xl p-8 shadow-lg">
-            {/* Introduction */}
-            <p className={`text-gray-700 leading-relaxed mb-8 ${
-              isMobile ? 'text-base' : 'text-lg'
-            }`}>
-              {resources.introduction}
-            </p>
-            
-            {/* Industry Leader Quotes */}
-            <div className={`grid gap-8 ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'}`}>
-              {resources.quotes.map((quote, index) => (
-                <div key={index} className="bg-gray-50 rounded-lg p-6">
-                  <blockquote className={`italic text-gray-600 mb-4 ${
-                    isMobile ? 'text-base' : 'text-lg'
-                  }`}>
-                    "{quote.quote}"
-                  </blockquote>
-                  
-                  <div className="flex items-center mt-4">
-                    <img 
-                      src={quote.author.image} 
-                      alt={quote.author.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4"
-                      onError={(e) => {
-                        // Fallback to placeholder if image fails to load
-                        e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(quote.author.name)}&background=5e29a3&color=fff&size=48`;
-                      }}
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm">
-                        {quote.author.name}
-                      </p>
-                      <p className="text-gray-600 text-xs">
-                        {quote.author.title}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            
-            {/* Conclusion */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <h4 className={`font-bold text-gray-900 mb-4 ${
-                isMobile ? 'text-lg' : 'text-xl'
-              }`}>
-                {resources.conclusion.title}
-              </h4>
-              <p className={`text-gray-700 leading-relaxed ${
-                isMobile ? 'text-base' : 'text-lg'
-              }`}>
-                {resources.conclusion.content}
-              </p>
-            </div>
+        {/* Blog Grid Layout */}
+        <div className="max-w-7xl mx-auto">
+          <div className={`grid gap-6 ${
+            isMobile 
+              ? 'grid-cols-1' 
+              : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+          }`}>
+            {/* All Posts - Equal Height */}
+            {validBlogPosts.map((post, index) => (
+              <BlogCard 
+                key={`${post.id}-${index}`} 
+                post={post} 
+                variant={index === 0 ? 'featured' : 'default'}
+              />
+            ))}
+          </div>
+          
+          {/* View All Resources Button */}
+          <div className="text-center mt-12">
+            <Link 
+              to="/resources"
+              className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl inline-block"
+            >
+              View All Resources
+            </Link>
           </div>
         </div>
       </div>

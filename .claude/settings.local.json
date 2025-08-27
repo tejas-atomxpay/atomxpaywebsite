@@ -18,7 +18,10 @@
       "Bash(pnpm audit:*)",
       "Bash(pnpm update:*)",
       "Bash(pnpm install:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(node:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(npx tsc:*)"
     ],
     "deny": [],
     "ask": []
