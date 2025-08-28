@@ -290,10 +290,10 @@ function BlogPostComponent() {
 
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="prose prose-lg max-w-none">
-              <div className="space-y-6 text-gray-700 leading-relaxed">
-                <p>{post.content}</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              </div>
+              <div 
+                className="space-y-6 text-gray-700 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
             </div>
 
             <div className="border-t border-gray-200 pt-8 mt-8">
