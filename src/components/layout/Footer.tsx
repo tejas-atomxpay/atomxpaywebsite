@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
         
         {/* Bottom Section with Email */}
         <div className="border-t border-gray-800 py-4">
-          <div className="text-center">
+          <div className="text-center text-sm">
             For any queries or grievances, please write to us at{" "}
             <a 
               href="mailto:contactus@atomxpay.com" 

@@ -216,29 +216,29 @@
     }
   },
   "howItWorks": {
-    "title": "Experience Blockchain Rails",
+    "title": "How AtomX Pay works?",
     "subtitle": "Watch your money travel the modern way — zero middlemen, zero delays",
     "steps": [
       {
         "number": 1,
-        "title": "Connect Your Wallet",
-        "description": "Link your bank account or digital wallet. Our blockchain rails connect directly to global financial networks, bypassing traditional correspondent banking.",
+        "title": "Sign Up & Verify — Simple and Secure",
+        "description": "Create your AtomX Pay account in minutes. Complete quick KYC verification for both sender and receiver to ensure every transfer is safe and fully compliant.",
+        "icon": "user-check",
+        "highlight": "Simple and Secure"
+      },
+      {
+        "number": 2,
+        "title": "Connect & Lock In Rates — No Banking Delays",
+        "description": "Link your bank account or digital wallet, then view real-time exchange rates with zero markup. Lock in the exact rate you see — no hidden spreads, no pre-loaded currency pools.",
         "icon": "link",
         "highlight": "No Banking Delays"
       },
       {
-        "number": 2,
-        "title": "Live Rate Lock-In",
-        "description": "See real-time exchange rates with zero markup. Lock in the exact rate you see — no hidden spreads or pre-loaded currency pools.",
-        "icon": "trending-up",
-        "highlight": "True Market Rates"
-      },
-      {
         "number": 3,
-        "title": "Blockchain Settlement",
-        "description": "Your transfer moves via blockchain rails in 15 minutes. Track every step with full transparency — from initiation to final settlement.",
-        "icon": "zap",
-        "highlight": "15-Min Settlement"
+        "title": "Transfer & Settle — In Just 15 Minutes",
+        "description": "Send funds via blockchain rails with end-to-end transparency. Track your transfer at every stage, from initiation to final settlement, completed in just 15 minutes.",
+        "icon": "send",
+        "highlight": "15-Minute Settlement"
       }
     ],
     "compliance": {
@@ -366,7 +366,7 @@
     "posts": [
       {
         "id": "understanding-blockchain-remittances",
-        "title": "Understanding Blockchain Remittances: A Complete Guide to the Future of Money Transfers",
+        "title": "Blockchain and Cross-Border Payments — Insights From Industry Leaders",
         "excerpt": "Blockchain remittances are transforming how money moves across borders. Learn how this revolutionary technology works, why it's faster and cheaper than traditional methods, and how it's creating financial opportunities for millions worldwide.",
         "date": "March 15, 2025",
         "readTime": "8 min read",

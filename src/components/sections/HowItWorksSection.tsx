@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link, TrendingUp, Zap } from 'lucide-react';
+import { Link, TrendingUp, Zap, UserCheck, Send } from 'lucide-react';
 import { useIsMobile } from '../../hooks/use-mobile';
 import content from '../../data/content.json';
 
 const iconMap = {
   link: Link,
   'trending-up': TrendingUp,
-  zap: Zap
+  zap: Zap,
+  'user-check': UserCheck,
+  send: Send
 };
 
 const HowItWorksSection: React.FC = () => {
