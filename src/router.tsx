@@ -152,6 +152,15 @@ function ResourcesPageComponent() {
   const { blog } = content
   const isMobile = useIsMobile()
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { duration: 0.5 })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [])
+
   // Safely get blog posts with fallback
   const blogPosts = blog?.posts?.filter(post => post && post.id) || []
 
@@ -196,6 +205,15 @@ function BlogPostComponent() {
   const { postId } = useParams({ from: '/resources/$postId' })
   const { blog } = content
   const isMobile = useIsMobile()
+
+  // Scroll to top when component mounts or postId changes
+  useEffect(() => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { duration: 0.5 })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [postId])
 
   // Safely find the post
   const post = blog?.posts?.find(p => p && p.id === postId)
@@ -341,7 +359,10 @@ const routeTree = rootRoute.addChildren([
   blogPostRoute,
 ])
 
-export const router = createRouter({ routeTree })
+export const router = createRouter({ 
+  routeTree,
+  defaultPreload: 'intent'
+})
 
 declare module '@tanstack/react-router' {
   interface Register {
