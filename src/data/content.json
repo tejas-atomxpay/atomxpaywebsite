@@ -77,7 +77,7 @@
     },
     "categories": {
       "traditional": "Traditional Banking Rails",
-      "msb": "Monet Service Businesses (MSBs) using Traditional Rails",
+      "msb": "Money Service Businesses (MSBs) using Traditional Rails",
       "blockchain": "Fintech on Blockchain Rails"
     },
     "providers": [
