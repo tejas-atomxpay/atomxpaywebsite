@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
         {/* Main Footer Content */}
         <div className={`${isMobile ? 'py-6' : 'py-8'}`}>
           <div className={`grid gap-8 ${
-            isMobile ? 'grid-cols-1' : 'md:grid-cols-3'
+            isMobile ? 'grid-cols-1' : 'md:grid-cols-2 lg:grid-cols-4'
           }`}>
             {/* Column 1: AtomX Pay */}
             <div className={`${isMobile ? 'text-center' : ''}`}>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                 {footer.copyright}
               </p>
             </div>
-            
+
             {/* Column 2: Quick Links */}
             <div className={`${isMobile ? 'text-center mt-6' : ''}`}>
               <h3 className="text-white font-semibold mb-4 text-lg">{footer.sections[0].title}</h3>
@@ -42,27 +42,24 @@ const Footer: React.FC = () => {
                 ))}
               </ul>
             </div>
-            
-            {/* Column 3: Address */}
+
+            {/* Column 3: USA Office */}
             <div className={`${isMobile ? 'text-center mt-6' : ''}`}>
-              <h3 className="text-white font-semibold mb-4 text-lg">Contact Us</h3>
-              <div className="space-y-4">
-                {/* USA Office */}
-                <div>
-                  <h4 className="text-white font-medium mb-2 text-sm">{footer.contact.usa.title}</h4>
-                  <div className="text-gray-300 text-xs space-y-1">
-                    <p className="leading-relaxed">{footer.contact.usa.address}</p>
-                  </div>
-                </div>
-                
-                {/* India Office */}
-                <div>
-                  <h4 className="text-white font-medium mb-2 text-sm">{footer.contact.india.title}</h4>
-                  <div className="text-gray-300 text-xs space-y-1">
-                    <p className="leading-relaxed">{footer.contact.india.address}</p>
-                  </div>
-                </div>
-                
+              <h3 className="text-white font-semibold mb-4 text-lg">{footer.contact.usa.title}</h3>
+              <div className="text-gray-300 text-xs space-y-1">
+                <p className="font-medium">{footer.contact.usa.company}</p>
+                <p>EIN: {footer.contact.usa.ein}</p>
+                <p className="leading-relaxed mt-2">{footer.contact.usa.address}</p>
+              </div>
+            </div>
+
+            {/* Column 4: India Office */}
+            <div className={`${isMobile ? 'text-center mt-6' : ''}`}>
+              <h3 className="text-white font-semibold mb-4 text-lg">{footer.contact.india.title}</h3>
+              <div className="text-gray-300 text-xs space-y-1">
+                <p className="font-medium">{footer.contact.india.company}</p>
+                <p>CIN: {footer.contact.india.cin}</p>
+                <p className="leading-relaxed mt-2">{footer.contact.india.address}</p>
               </div>
             </div>
           </div>

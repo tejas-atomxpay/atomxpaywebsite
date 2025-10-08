@@ -491,12 +491,16 @@
     "contact": {
       "usa": {
         "title": "USA Office",
+        "company": "AtomX Pay Inc",
+        "ein": "39-4492691",
         "address": "350 Fifth Avenue, New York, NY 10118",
         "phone": "+1 (646) 946-5250",
         "email": "contactus@atomxpay.com"
       },
       "india": {
         "title": "India Office",
+        "company": "AtomX Pay Private Limited",
+        "cin": "U62099MH2025PTC452119",
         "address": "Gemstar Commercial Complex Malad (West), Mumbai – 400064",
         "phone": "+91 9920453232",
         "email": "contactus@atomxpay.com"
