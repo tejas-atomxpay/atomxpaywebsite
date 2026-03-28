@@ -6,6 +6,7 @@ import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
 import { CurrencyProvider } from './contexts/CurrencyContext'
 import HeroSection from './components/sections/HeroSection'
+import InfrastructureSection from './components/sections/InfrastructureSection'
 import ComparisonSection from './components/sections/ComparisonSection'
 import HowItWorksSection from './components/sections/HowItWorksSection'
 import TestimonialsSection from './components/sections/TestimonialsSection'
@@ -134,13 +135,14 @@ function RootComponent() {
     </CurrencyProvider>
   )
 }
-
 function IndexComponent() {
   return (
     <>
       <HeroSection />
+      <InfrastructureSection />
       {/* 
       <ComparisonSection />
+...
       <HowItWorksSection />
       <FAQSection />
       <TestimonialsSection />

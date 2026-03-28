@@ -2,7 +2,6 @@
   "navigation": {
     "logo": "AtomX Pay",
     "links": [
-      { "id": "business-model", "label": "How It Works" }
     ]
   },
   "hero": {
@@ -18,6 +17,10 @@
       "primary": "Request Demo/ Partner with us",
       "secondary": "Send Money Now"
     }
+  },
+  "infrastructure": {
+    "title": "Built for Regulated Financial Institutions",
+    "content": "AtomX Pay is a technology infrastructure provider — not a custodian of funds. We partner exclusively with licensed banks, MSBs, and financial institutions, enabling them to modernize cross-border payments while maintaining full regulatory control and compliance ownership."
   },
   "calculator": {
     "title": "Live Rates, Seamless Transfers",
@@ -532,7 +535,7 @@
         "email": "contactus@atomxpay.com"
       }
     },
-    "copyright": "© 2025 AtomX Pay. All rights reserved."
+    "copyright": "© 2026 AtomX Pay. All rights reserved."
   }
 }
 

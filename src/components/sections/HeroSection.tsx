@@ -61,7 +61,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
     <section className={`relative bg-white text-black shader-container overflow-hidden ${
       isMobile 
         ? 'py-8 min-h-screen flex flex-col justify-center' 
-        : 'py-12 h-[75vh] flex items-center'
+        : 'py-12 md:min-h-[85vh] lg:h-[85vh] flex items-center'
     }`}>
       {/* MeshGradient Background */}
       {/* <div className="absolute inset-0 shader-overlay">
