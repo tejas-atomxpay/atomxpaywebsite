@@ -127,7 +127,7 @@ const HowItWorksSection: React.FC = () => {
               {howItWorks.compliance.description}
             </p>
             <a 
-              href="mailto:contactus@atomxpay.com?subject=Start Blockchain Transfer with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI would like to experience blockchain rails for my international money transfer. Please help me get started.%0D%0A%0D%0AThank you!"
+              href="mailto:contactus@atomxpay.com?subject=Start Blockchain Transfer with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI would like to experience blockchain rails for my international money transfer. Please help me Request Demo/ Partner with us.%0D%0A%0D%0AThank you!"
               className="bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-lg transition-all duration-300 inline-block text-center no-underline cursor-pointer transform hover:scale-105"
             >
               {howItWorks.compliance.button}

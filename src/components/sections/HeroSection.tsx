@@ -110,7 +110,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
               ))}
             </div>
             
-            {/* Social Proof Counters with Enhanced Effects */}
+            {/* Social Proof Counters with Enhanced Effects - Commented out as requested
             <div className={`flex flex-wrap gap-6 text-gray-600 ${
               isMobile ? 'justify-center mb-6' : 'justify-center lg:justify-start mb-8'
             }`}>
@@ -126,20 +126,15 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
                   <span className="font-semibold text-orange-600">{transfersToday}</span> transfers today
                 </span>
               </div>
-              {/* <div className="flex items-center gap-2 glass-morphism-dark rounded-full px-3 py-1 animate-bounce-in" style={{animationDelay: '0.5s'}}>
-                <div className="w-3 h-3 bg-green-600 rounded-full pulse-success drop-shadow-sm"></div>
-                <span className="text-sm text-green-800 font-bold font-technical drop-shadow-sm" style={{textShadow: '1px 1px 2px rgba(255,255,255,0.8)'}}>
-                  Live rates updated {lastUpdated ? 'now' : 'hourly'}
-                </span>
-              </div> */}
             </div>
+            */}
             
             {/* CTA Buttons with Premium Effects */}
             <div className={`flex flex-col gap-4 ${
               isMobile ? 'justify-center items-center' : 'sm:flex-row justify-center lg:justify-start'
             }`}>
               <a 
-                href="mailto:contactus@atomxpay.com?subject=Get Started with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI am interested in starting international money transfers with AtomX Pay. Please provide me with more information on how to get started.%0D%0A%0D%0AThank you!"
+                href="mailto:contactus@atomxpay.com?subject=Request Demo/ Partner with us with AtomX Pay&body=Hello AtomX Pay team,%0D%0A%0D%0AI am interested in starting international money transfers with AtomX Pay. Please provide me with more information on how to Request Demo/ Partner with us.%0D%0A%0D%0AThank you!"
                 className="atomx-gradient-accent text-white px-8 py-4 rounded-lg text-lg font-semibold hover-lift btn-gooey font-technical relative overflow-hidden group inline-block text-center no-underline cursor-pointer" 
                 style={{filter: 'url(#atomx-glow)'}}
               >

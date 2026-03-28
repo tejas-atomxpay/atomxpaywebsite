@@ -139,11 +139,14 @@ function IndexComponent() {
   return (
     <>
       <HeroSection />
+      {/* 
       <ComparisonSection />
       <HowItWorksSection />
       <FAQSection />
       <TestimonialsSection />
       <ResourcesSection />
+      */}
+      <HowItWorksSection />
     </>
   )
 }
@@ -320,7 +323,7 @@ function BlogPostComponent() {
                   Ready to experience blockchain-powered transfers?
                 </h3>
                 <button className="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300 shadow-lg hover:shadow-xl">
-                  Get Started with AtomX Pay
+                  Request Demo/ Partner with us with AtomX Pay
                 </button>
               </div>
             </div>

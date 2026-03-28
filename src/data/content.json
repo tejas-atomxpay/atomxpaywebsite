@@ -2,16 +2,12 @@
   "navigation": {
     "logo": "AtomX Pay",
     "links": [
-      { "id": "comparison", "label": "Compare AtomX Pay" },
-      { "id": "business-model", "label": "How It Works" },
-      { "id": "faq", "label": "FAQs" },
-      { "id": "testimonials", "label": "Testimonials" },
-      { "id": "resources", "label": "Resources" }
+      { "id": "business-model", "label": "How It Works" }
     ]
   },
   "hero": {
-    "title": "Global Remittances in 15 Minutes.",
-    "subtitle": ["No preloaded rates. No banking middleman. No delay.","Atomic settlement with transparent blockchain transfers."],
+    "title": "Global Payment Infrastructure for Regulated US Entities",
+    "subtitle": "Next-gen blockchain infrastructure for instant, secure, and cost-effective global institutional payments.",
     "trustBadges": [
       { "text": "100% Compliant", "icon": "check" },
       { "text": "No Hidden Fees", "icon": "check" },      
@@ -19,7 +15,7 @@
       
     ],
     "buttons": {
-      "primary": "Get Started",
+      "primary": "Request Demo/ Partner with us",
       "secondary": "Send Money Now"
     }
   },
@@ -216,7 +212,7 @@
     }
   },
   "howItWorks": {
-    "title": "How AtomX Pay works?",
+    "title": "How AtomX Pay works for your users",
     "subtitle": "Watch your money travel the modern way — zero middlemen, zero delays",
     "steps": [
       {
