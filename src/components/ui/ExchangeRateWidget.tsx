@@ -25,6 +25,8 @@ const ExchangeRateWidget: React.FC<ExchangeRateWidgetProps> = ({
       case 'USD': return calculator.values.flatFeeUSD;
       case 'INR': return calculator.values.flatFeeINR;
       case 'EUR': return calculator.values.flatFeeEUR;
+      case 'GBP': return calculator.values.flatFeeGBP;
+      case 'AED': return calculator.values.flatFeeAED;
       default: return calculator.values.flatFee;
     }
   };

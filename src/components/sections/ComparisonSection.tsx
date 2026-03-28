@@ -12,6 +12,8 @@ const ComparisonSection: React.FC = () => {
   const toAmount = fromAmount * exchangeRate;
   const atomxFee = currentPair.from === 'USD' ? calculator.values.flatFeeUSD : 
                    currentPair.from === 'EUR' ? calculator.values.flatFeeEUR : 
+                   currentPair.from === 'GBP' ? calculator.values.flatFeeGBP : 
+                   currentPair.from === 'AED' ? calculator.values.flatFeeAED : 
                    calculator.values.flatFeeINR;
   
   // Generate dynamic provider data from content.json
@@ -22,7 +24,7 @@ const ComparisonSection: React.FC = () => {
     return comparison.providers.map(provider => {
       const markupMultiplier = 1 - (provider.markupPercent / 100);
       const providerFee = provider.fees[currentPair.from as keyof typeof provider.fees] || 0;
-      const currencySymbol = currentPair.from === 'USD' ? '$' : currentPair.from === 'EUR' ? '€' : '₹';
+      const currencySymbol = currentPair.fromSymbol;
       
       // Calculate recipient amount
       let recipientAmount;

@@ -34,6 +34,8 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
       case 'INR': return 100000;
       case 'USD': return 1000;
       case 'EUR': return 1000;
+      case 'GBP': return 1000;
+      case 'AED': return 5000;
       default: return 1000;
     }
   };

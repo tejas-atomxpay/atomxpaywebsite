@@ -48,13 +48,29 @@
         "fromSymbol": "$",
         "toSymbol": "₹",
         "apiPair": "USD_INR"
+      },
+      {
+        "from": "GBP",
+        "to": "INR",
+        "fromSymbol": "£",
+        "toSymbol": "₹",
+        "apiPair": "GBP_INR"
+      },
+      {
+        "from": "AED",
+        "to": "INR",
+        "fromSymbol": "د.إ",
+        "toSymbol": "₹",
+        "apiPair": "AED_INR"
       }
     ],
     "values": {
-      "flatFee": 4,
-      "flatFeeUSD": 4,
+      "flatFee": 3,
+      "flatFeeUSD": 3,
       "flatFeeINR": 250,
       "flatFeeEUR": 2.5,
+      "flatFeeGBP": 3,
+      "flatFeeAED": 15,
       "transferTime": "~15 minutes",
       "zeroFeePromo": "Zero fee for the first transfer"
     },
@@ -84,7 +100,9 @@
         "fees": {
           "USD": 3,
           "EUR": 2.5,
-          "INR": 250
+          "INR": 250,
+          "GBP": 3,
+          "AED": 15
         },
         "time": "~15 minutes",
         "highlight": true
@@ -96,7 +114,9 @@
         "fees": {
           "USD": 45,
           "EUR": 40,
-          "INR": 3500
+          "INR": 3500,
+          "GBP": 35,
+          "AED": 150
         },
         "time": "3-5 days"
       },
@@ -107,7 +127,9 @@
         "fees": {
           "USD": 35,
           "EUR": 30,
-          "INR": 2800
+          "INR": 2800,
+          "GBP": 25,
+          "AED": 120
         },
         "time": "2-4 days"
       },
@@ -118,7 +140,9 @@
         "fees": {
           "USD": 30,
           "EUR": 25,
-          "INR": 2500
+          "INR": 2500,
+          "GBP": 20,
+          "AED": 100
         },
         "time": "2-3 days"
       },
@@ -129,7 +153,9 @@
         "fees": {
           "USD": 15,
           "EUR": 12,
-          "INR": 1200
+          "INR": 1200,
+          "GBP": 10,
+          "AED": 50
         },
         "time": "1-2 days"
       },
@@ -140,7 +166,9 @@
         "fees": {
           "USD": 4.99,
           "EUR": 4.50,
-          "INR": 400
+          "INR": 400,
+          "GBP": 3.99,
+          "AED": 20
         },
         "time": "1-3 days"
       },
@@ -151,7 +179,9 @@
         "fees": {
           "USD": 8,
           "EUR": 7,
-          "INR": 650
+          "INR": 650,
+          "GBP": 5,
+          "AED": 30
         },
         "time": "1-2 days"
       }
