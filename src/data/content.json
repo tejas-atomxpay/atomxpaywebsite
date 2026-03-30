@@ -53,6 +53,41 @@
         "apiPair": "USD_INR"
       },
       {
+        "from": "USD",
+        "to": "GBP",
+        "fromSymbol": "$",
+        "toSymbol": "£",
+        "apiPair": "USD_GBP"
+      },
+      {
+        "from": "USD",
+        "to": "EUR",
+        "fromSymbol": "$",
+        "toSymbol": "€",
+        "apiPair": "USD_EUR"
+      },
+      {
+        "from": "USD",
+        "to": "AED",
+        "fromSymbol": "$",
+        "toSymbol": "د.إ",
+        "apiPair": "USD_AED"
+      },
+      {
+        "from": "USD",
+        "to": "MXN",
+        "fromSymbol": "$",
+        "toSymbol": "$",
+        "apiPair": "USD_MXN"
+      },
+      {
+        "from": "USD",
+        "to": "JPY",
+        "fromSymbol": "$",
+        "toSymbol": "¥",
+        "apiPair": "USD_JPY"
+      },
+      {
         "from": "GBP",
         "to": "INR",
         "fromSymbol": "£",
