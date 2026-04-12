@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Check, Users, Zap } from 'lucide-react';
 // import { MeshGradient } from '@paper-design/shaders-react';
-import ExchangeRateWidget from '../ui/ExchangeRateWidget';
+// import ExchangeRateWidget from '../ui/ExchangeRateWidget';
 import { useIsMobile } from '../../hooks/use-mobile';
 import { useCurrencyAPI } from '../../hooks/useCurrencyAPI';
 import { useCurrency } from '../../contexts/CurrencyContext';
@@ -152,7 +152,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
             </div>
           </div>
           
-          {/* Exchange Rate Widget */}
+          {/* Exchange Rate Widget - Commented out as requested
           <div className={isMobile ? "flex justify-center mt-8" : "flex justify-center lg:justify-end"}>
             <ExchangeRateWidget 
               fromAmount={fromAmount} 
@@ -164,6 +164,7 @@ const HeroSection: React.FC<HeroSectionProps> = () => {
               onPairChange={setCurrentPair}
             />
           </div>
+          */}
         </div>
       </div>
     </section>
